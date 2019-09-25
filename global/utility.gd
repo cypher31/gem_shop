@@ -54,10 +54,12 @@ var stageSceneDict = {
 }
 
 
-#object scene dictionary
+#active actor scene dictionary
+var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
+var tile_size : Vector2 = soil_tile_node.instance().get_node("Sprite").get_texture().get_size() # get the size of tiles currently being used
 
-var objectSceneDict = {
-
+var active_actor_dict = {
+	"soil_tile_node" : soil_tile_node
 	}
 
 #music dictionary
@@ -118,21 +120,21 @@ func sceneSwitch(scene): #add a "self" variable so the current scene can free it
 	pass
 	
 
-func spawnObject(object, parent, position):
+func spawn_object(object, parent, position):
 	var objectToInstance = object.instance()
 	
 	parent.add_child(objectToInstance)
 	
-	if objectToInstance.has_node("spawn"):
-		var spawnPosition = objectToInstance.get_node("spawn").get_global_position();
+	if parent.has_node("spawn"):
+		var spawnPosition = parent.get_node("spawn").get_global_position();
 		
 		#move object to be spawned by the delta of given position and spawn node
-		objectToInstance.set_global_position(position - spawnPosition)
+		objectToInstance.set_global_position(position + spawnPosition)
 	elif position != null:
 		objectToInstance.set_global_position(position)
 	else:
 		pass
-	pass
+	return objectToInstance
 	
 
 func getGameState():
