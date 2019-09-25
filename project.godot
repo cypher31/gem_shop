@@ -16,7 +16,20 @@ _global_script_class_icons={
 [application]
 
 config/name="tap_my_gem_shop"
+run/main_scene="res://main/main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+utility="*res://global/utility.gd"
+states="*res://global/states.gd"
+
+[display]
+
+window/size/width=900
+window/size/height=1600
+window/size/test_width=360
+window/size/test_height=640
 
 [rendering]
 
