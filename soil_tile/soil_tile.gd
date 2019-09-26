@@ -7,7 +7,8 @@ var soil_tile_dim : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Control.connect("gui_input", self, "_action_input")
+	$Sprite/Control.connect("gui_input", self, "_action_input")
+	$Sprite/Control2.connect("gui_input", self, "_action_input")
 
 	soil_tile_dim = $Sprite.get_texture().get_size()
 	

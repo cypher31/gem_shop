@@ -5,12 +5,13 @@ var tile_name : String = "soil_tile_node"
 
 var grid_size : Vector2 = Vector2(7, 5)
 var tile_size : Vector2 = utility.tile_size
-var grid_depth : int = 2
+var grid_depth : int = 20
 var z_draw_depth : int = 0
 
 var grid_spawn_array : Array
 
-var tile_align_mod : float = 40 #align the tiles so that they are touching
+var tile_align_mod : float = 24 #align the tiles so that they are touching
+var tile_depth_mod : float = 9 #pixel depth of 3-d look of tile
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,15 +37,15 @@ func spawn_tile_grid(array):
 		for j in range(0, array.size()):
 			for k in range(0, array[j]):
 				if j & 1:
-					position = Vector2(tile_size.x + k * utility.tile_size.x,j * (utility.tile_size.y - tile_align_mod))
+					position = Vector2(tile_size.x + k * utility.tile_size.x,j * (utility.tile_size.y - tile_align_mod) - z_draw_depth * tile_depth_mod)
 				else:
-					position = Vector2(tile_size.x + (k - 0.5) * utility.tile_size.x, j * (utility.tile_size.y - tile_align_mod))
+					position = Vector2(tile_size.x + (k - 0.5) * utility.tile_size.x, j * (utility.tile_size.y - tile_align_mod) - z_draw_depth * tile_depth_mod)
 					
 				var tile = utility.spawn_object(utility.active_actor_dict[tile_name], self, position)
 				tile.set_z_index(z_draw_depth)
-
+				print(tile.get_z_index())
 				pass
 			pass
-		z_draw_depth -= 1
+		z_draw_depth += 1
 		pass
 	pass
