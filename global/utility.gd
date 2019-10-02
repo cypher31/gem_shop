@@ -4,9 +4,12 @@ extends Node
 #this script holds common functions that can be called by the game at any time
 
 #game specific signals
-
+signal user_dig
 
 #general signals
+
+#global object variables
+var coin_count_label : Control
 
 #devic info variables
 var deviceType
@@ -30,9 +33,10 @@ var resolution = Vector2(1280, 720)
 
 
 #player variables (for saving and for the player script to grab)
+var coin_count : int
 
-var playerVariableDict = {
-
+var user_variables = {
+	"coin_count" : coin_count
 	}
 
 # stored variables
@@ -58,8 +62,11 @@ var stageSceneDict = {
 var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
 var tile_size : Vector2 = soil_tile_node.instance().get_node("Sprite").get_texture().get_size() # get the size of tiles currently being used
 
+var coin = preload("res://coin/coin.tscn")
+
 var active_actor_dict = {
-	"soil_tile_node" : soil_tile_node
+	"soil_tile_node" : soil_tile_node,
+	"coin" : coin
 	}
 
 #music dictionary
@@ -185,4 +192,27 @@ func tile_damage(tile_health):
 	
 func tile_destroy(tile):
 	tile.queue_free()
+	
+	var timer = Timer.new()
+	timer.connect("timeout", self, "__coin_timer_timeout")
+	add_child(timer)
+	timer.set_wait_time(.2)
+	timer.set_one_shot(true)
+	timer.start()
+	pass
+	
+	
+func __coin_timer_timeout():
+	emit_signal("user_dig")
+	pass
+
+
+func get_coin(coin):
+	var coin_value = 100
+	
+	coin_count += coin_value
+	
+	coin.queue_free()
+	
+	coin_count_label.set_text(str(coin_count))
 	pass

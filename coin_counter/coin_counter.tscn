@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="coin_count" type="Label"]
+margin_left = 7.0
+margin_top = 37.0
+margin_right = 271.0
+margin_bottom = 51.0
+text = "COIN_COUNTER"
+align = 1
+valign = 1
+uppercase = true
