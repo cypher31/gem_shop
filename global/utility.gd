@@ -187,7 +187,6 @@ func sfx_finished(bus,free):
 	
 func tile_damage(tile_health):
 	tile_health = tile_health - 1
-	emit_signal("user_dig")
 	return tile_health
 	
 	
