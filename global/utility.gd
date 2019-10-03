@@ -63,10 +63,12 @@ var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
 var tile_size : Vector2 = soil_tile_node.instance().get_node("Sprite").get_texture().get_size() # get the size of tiles currently being used
 
 var coin = preload("res://coin/coin.tscn")
+var gem_small = preload("res://gem_small/gem_small.tscn")
 
 var active_actor_dict = {
 	"soil_tile_node" : soil_tile_node,
-	"coin" : coin
+	"coin" : coin,
+	"gem_small" : gem_small
 	}
 
 #music dictionary
@@ -215,4 +217,9 @@ func get_coin(coin):
 	coin.queue_free()
 	
 	coin_count_label.set_text(str(coin_count))
+	pass
+	
+
+func get_gem(gem_size, gem_type):
+	print(gem_size, gem_type)
 	pass

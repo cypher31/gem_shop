@@ -26,7 +26,7 @@ func _action_input(viewport, event, id):
 	
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
 		for tile in overlapping_areas:
-			if !tile.is_in_group("coin"):
+			if tile.is_in_group("soil"):
 				if tile.get_parent().soil_column == soil_column:
 					z_depth_array.append(tile.get_parent().get_z_index())
 					pass

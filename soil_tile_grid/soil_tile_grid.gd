@@ -20,6 +20,7 @@ var tile_position_array : Array = [] #array to hold locations of tiles
 func _ready():
 	spawn_tile_grid(grid_size_calc(grid_size), grid_depth)
 	spawn_coins(tile_position_array, grid_depth)
+	spawn_gems(tile_position_array, grid_depth)
 	pass # Replace with function body.
 
 
@@ -70,5 +71,20 @@ func spawn_coins(tile_positions, depth):
 
 		var coin = utility.spawn_object(utility.active_actor_dict["coin"], $coin_spawn,tile_positions[random_num])
 		coin.set_z_index(random_depth)
+		pass
+	pass
+	
+	
+func spawn_gems(tile_positions, depth):
+	var total_gems : int
+
+	total_gems = sqrt(tile_positions.size()) * 2
+
+	for i in range(0, total_gems):
+		var random_num = randi() % tile_positions.size()
+		var random_depth = (randi() % depth) - 1
+
+		var gem = utility.spawn_object(utility.active_actor_dict["gem_small"], $gem_spawn,tile_positions[random_num])
+		gem.set_z_index(random_depth)
 		pass
 	pass
