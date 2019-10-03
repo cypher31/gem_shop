@@ -10,6 +10,9 @@ signal user_dig
 
 #global object variables
 var coin_count_label : Control
+var gem_small_container : Control
+var gem_med_container : Control
+var gem_large_container : Control
 
 #devic info variables
 var deviceType
@@ -71,6 +74,11 @@ var active_actor_dict = {
 	"gem_small" : gem_small
 	}
 
+#passive actor scene dictonary
+
+var passive_actor_dict = {
+	
+	}
 #music dictionary
 
 
@@ -220,6 +228,19 @@ func get_coin(coin):
 	pass
 	
 
-func get_gem(gem_size, gem_type):
-	print(gem_size, gem_type)
+func get_gem(gem_actor, gem_size, gem_type):
+	if gem_size == "small":
+		gem_actor.queue_free()
+		
+		var asset_path = "res://assets/actor_passive/gem_small/gem_"
+		var asset = load(asset_path + gem_type + ".png")
+		
+		var grid = gem_small_container.get_node("PanelContainer/gem_grid")
+		
+		var gem = TextureRect.new()
+		gem.set_texture(asset)
+		
+		grid.add_child(gem)
+		
+		pass
 	pass

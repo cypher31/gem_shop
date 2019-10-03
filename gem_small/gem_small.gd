@@ -32,7 +32,7 @@ func __check_overlap():
 		pass
 	
 	if is_top_level:
-		utility.get_gem(gem_size, gem_type)
+		utility.get_gem(self, gem_size, gem_type)
 		
 	z_depth_array.clear()
 	
