@@ -93,6 +93,23 @@ var sfxDict = {
 
 	}
 
+
+#dictionary to hold all of the users gems
+var gem_sizes : Dictionary = {"small" : 0, "med" : 0, "large" : 0}
+
+var jade_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
+var ruby_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var emerald_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var diamond_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+
+var gem_count_dict = {
+	"jade" : jade_quality,
+	"ruby" : ruby_quality,
+	"emerald" : emerald_quality,
+	"diamond" : diamond_quality,
+	}
+	
+	
 func _ready():
 	randomize()
 	
@@ -228,7 +245,7 @@ func get_coin(coin):
 	pass
 	
 
-func get_gem(gem_actor, gem_size, gem_type):
+func get_gem(gem_actor, gem_size, gem_type, gem_quality):
 	if gem_size == "small":
 		gem_actor.queue_free()
 		
@@ -242,5 +259,8 @@ func get_gem(gem_actor, gem_size, gem_type):
 		
 		grid.add_child(gem)
 		
+		gem_count_dict[gem_type][gem_quality][gem_size] += 1
 		pass
+	
+	print(gem_count_dict)
 	pass

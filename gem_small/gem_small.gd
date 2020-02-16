@@ -2,6 +2,7 @@ extends Node2D
 
 var gem_size : String = "small"#small med or large
 var gem_type : String = "jade" #jade, emerald, diamond, etc.
+var gem_quality : String = "rough"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +33,7 @@ func __check_overlap():
 		pass
 	
 	if is_top_level:
-		utility.get_gem(self, gem_size, gem_type)
+		utility.get_gem(self, gem_size, gem_type, gem_quality)
 		
 	z_depth_array.clear()
 	
