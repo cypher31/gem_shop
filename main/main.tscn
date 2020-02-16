@@ -12,7 +12,12 @@ font_data = ExtResource( 3 )
 
 [node name="stage_container" type="Node2D" parent="."]
 
-[node name="level_select" parent="stage_container" instance=ExtResource( 1 )]
+[node name="stage_pop_up" type="Popup" parent="stage_container"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="level_select" parent="stage_container/stage_pop_up" instance=ExtResource( 1 )]
 
 [node name="GUI_container" type="Control" parent="."]
 margin_right = 900.0

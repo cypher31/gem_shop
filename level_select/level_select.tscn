@@ -21,6 +21,8 @@ margin_top = 25.0
 margin_right = 875.0
 margin_bottom = 775.0
 
-[node name="active" type="Node2D" parent="actors"]
+[node name="active" type="Node2D" parent="actors/gui/mc/background"]
+position = Vector2( -25, -25 )
 
-[node name="passive" type="Node2D" parent="actors"]
+[node name="passive" type="Node2D" parent="actors/gui/mc/background"]
+position = Vector2( -25, -25 )
