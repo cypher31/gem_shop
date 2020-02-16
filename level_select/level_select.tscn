@@ -1,0 +1,26 @@
+[gd_scene format=2]
+
+[node name="level_select" type="Node2D"]
+position = Vector2( 0, 100 )
+
+[node name="actors" type="Node2D" parent="."]
+
+[node name="gui" type="Control" parent="actors"]
+
+[node name="mc" type="MarginContainer" parent="actors/gui"]
+margin_right = 900.0
+margin_bottom = 800.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="background" type="Panel" parent="actors/gui/mc"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 875.0
+margin_bottom = 775.0
+
+[node name="active" type="Node2D" parent="actors"]
+
+[node name="passive" type="Node2D" parent="actors"]
