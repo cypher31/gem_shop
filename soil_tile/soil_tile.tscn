@@ -3,13 +3,19 @@
 [ext_resource path="res://soil_tile/soil_tile.gd" type="Script" id=1]
 [ext_resource path="res://assets/prototype/soil_tile_hex.png" type="Texture" id=2]
 
-[node name="soil_tile" type="Node2D"]
+[node name="soil_tile" type="Node2D" groups=[
+"soil",
+]]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"soil",
+]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" groups=[
+"soil",
+]]
 polygon = PoolVector2Array( 0.000564575, -30.6762, 30.0461, -17.0062, 30.0461, 7.91309, 0.285355, 21.0135, -30.4721, 8.48267, -30.6145, -16.4366 )

@@ -10,6 +10,9 @@ signal user_dig
 
 #global object variables
 var coin_count_label : Control
+var gem_small_container : Control
+var gem_med_container : Control
+var gem_large_container : Control
 
 #devic info variables
 var deviceType
@@ -63,12 +66,19 @@ var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
 var tile_size : Vector2 = soil_tile_node.instance().get_node("Sprite").get_texture().get_size() # get the size of tiles currently being used
 
 var coin = preload("res://coin/coin.tscn")
+var gem_small = preload("res://gem_small/gem_small.tscn")
 
 var active_actor_dict = {
 	"soil_tile_node" : soil_tile_node,
-	"coin" : coin
+	"coin" : coin,
+	"gem_small" : gem_small
 	}
 
+#passive actor scene dictonary
+
+var passive_actor_dict = {
+	
+	}
 #music dictionary
 
 
@@ -215,4 +225,22 @@ func get_coin(coin):
 	coin.queue_free()
 	
 	coin_count_label.set_text(str(coin_count))
+	pass
+	
+
+func get_gem(gem_actor, gem_size, gem_type):
+	if gem_size == "small":
+		gem_actor.queue_free()
+		
+		var asset_path = "res://assets/actor_passive/gem_small/gem_"
+		var asset = load(asset_path + gem_type + ".png")
+		
+		var grid = gem_small_container.get_node("PanelContainer/gem_grid")
+		
+		var gem = TextureRect.new()
+		gem.set_texture(asset)
+		
+		grid.add_child(gem)
+		
+		pass
 	pass
