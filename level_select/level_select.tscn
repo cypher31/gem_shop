@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://level_select/level_select.gd" type="Script" id=1]
 [ext_resource path="res://assets/prototype/buttonX.png" type="Texture" id=2]
+[ext_resource path="res://level_location_pin/level_location_pin.tscn" type="PackedScene" id=3]
 
 [node name="level_select" type="Node2D"]
 position = Vector2( 0, 100 )
@@ -46,6 +47,34 @@ margin_bottom = 40.0
 mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource( 2 )
+
+[node name="level_location_pins" type="Control" parent="actors/gui/mc/background/active/gui_cont"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="level_location_pin" parent="actors/gui/mc/background/active/gui_cont/level_location_pins" instance=ExtResource( 3 )]
+margin_left = 710.64
+margin_top = 101.784
+margin_right = 670.64
+margin_bottom = 61.7843
+
+[node name="level_location_pin2" parent="actors/gui/mc/background/active/gui_cont/level_location_pins" instance=ExtResource( 3 )]
+margin_left = 444.15
+margin_top = 481.162
+margin_right = 404.15
+margin_bottom = 441.162
+
+[node name="level_location_pin3" parent="actors/gui/mc/background/active/gui_cont/level_location_pins" instance=ExtResource( 3 )]
+margin_left = 142.498
+margin_top = 133.245
+margin_right = 102.498
+margin_bottom = 93.2449
+
+[node name="level_location_pin4" parent="actors/gui/mc/background/active/gui_cont/level_location_pins" instance=ExtResource( 3 )]
+margin_left = 112.888
+margin_top = 656.971
+margin_right = 72.888
+margin_bottom = 616.971
 
 [node name="passive" type="Node2D" parent="actors/gui/mc/background"]
 position = Vector2( -25, -25 )
