@@ -5,6 +5,7 @@ extends Node
 
 #game specific signals
 signal user_dig
+signal stage_pop_up
 
 #general signals
 
@@ -54,10 +55,10 @@ var assetDict = {
 	}
 
 #stage scene dictionary
-
+var stage_level_select = load("res://level_select/level_select.tscn")
 
 var stageSceneDict = {
-
+"stage_level_select" : stage_level_select
 }
 
 
@@ -140,10 +141,16 @@ func _ready():
 #	pass
 	
 	
-func sceneSwitch(scene): #add a "self" variable so the current scene can free itself before spawning the new screen
+func sceneSwitch(scene, bool_popup, current_scene): #add a "self" variable so the current scene can free itself before spawning the new screen
 	var instanceScene = stageSceneDict[scene].instance()
 	
-	get_node("/root/main/stage_container").add_child(instanceScene)
+	if bool_popup:
+		get_node("/root/main/stage_container/stage_pop_up").add_child(instanceScene)
+		emit_signal("stage_pop_up")
+	else:
+		get_node("/root/main/stage_container").add_child(instanceScene)
+	
+	current_scene.queue_free()
 	
 #	if scene == "stageHighScore":
 #		print(final_score)
