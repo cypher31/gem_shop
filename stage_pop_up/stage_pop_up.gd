@@ -10,5 +10,6 @@ func _ready():
 	
 	
 func _stage_pop_up():
+	set_exclusive(true)
 	self.popup()
 	return

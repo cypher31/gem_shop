@@ -15,8 +15,10 @@ font_data = ExtResource( 4 )
 
 [node name="stage_pop_up" type="Popup" parent="stage_container"]
 visible = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 900.0
+margin_bottom = 1000.0
+mouse_filter = 1
+popup_exclusive = true
 script = ExtResource( 1 )
 
 [node name="level_select" parent="stage_container/stage_pop_up" instance=ExtResource( 2 )]
