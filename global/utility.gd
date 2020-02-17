@@ -6,6 +6,7 @@ extends Node
 #game specific signals
 signal user_dig
 signal stage_pop_up
+signal level_accepted
 
 #general signals
 
@@ -60,6 +61,13 @@ var stage_level_select = load("res://level_select/level_select.tscn")
 var stageSceneDict = {
 "stage_level_select" : stage_level_select
 }
+
+#dialog option scene dictionary
+var level_cost_popup = load("res://level_cost_popup/level_cost_popup.tscn")
+
+var dialogSceneDict = {
+	"level_cost_popup" : level_cost_popup
+	}
 
 
 #active actor scene dictionary
@@ -159,7 +167,16 @@ func sceneSwitch(scene, bool_popup, current_scene): #add a "self" variable so th
 #		pass
 #	instanceScene.set_position(Vector2(-960, -540))
 	pass
+
+
+func dialog_popup(scene, bool_exclusive):
+	var instance_dialog = dialogSceneDict[scene].instance()
 	
+	instance_dialog.set_exclusive(bool_exclusive)
+	
+	get_node("/root/main/stage_container/dialog_container").add_child(instance_dialog)
+	instance_dialog.popup()
+	return
 
 func spawn_object(object, parent, position):
 	var objectToInstance = object.instance()

@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://level_cost_popup/level_cost_popup.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/prototype/buttonX.png" type="Texture" id=3]
+[ext_resource path="res://assets/prototype/buttonY.png" type="Texture" id=4]
+
+[node name="level_cost_popup" type="Popup"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_top = 500.0
+margin_right = -300.0
+margin_bottom = -844.0
+mouse_filter = 2
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="cc" type="CenterContainer" parent="."]
+margin_right = 300.0
+margin_bottom = 256.0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="cc"]
+margin_right = 300.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 300, 256 )
+mouse_filter = 2
+
+[node name="vbox" type="VBoxContainer" parent="cc/Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 293.0
+margin_bottom = 249.0
+mouse_filter = 2
+
+[node name="level_animation" type="TextureRect" parent="cc/Panel/vbox"]
+margin_right = 286.0
+margin_bottom = 128.0
+mouse_filter = 2
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="level_cost" type="Label" parent="cc/Panel/vbox"]
+margin_top = 132.0
+margin_right = 286.0
+margin_bottom = 146.0
+text = "5000"
+align = 1
+uppercase = true
+
+[node name="hbox" type="HBoxContainer" parent="cc/Panel/vbox"]
+margin_top = 150.0
+margin_right = 286.0
+margin_bottom = 242.0
+size_flags_vertical = 3
+
+[node name="button_accept" type="TextureButton" parent="cc/Panel/vbox/hbox"]
+margin_right = 141.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="button_deny" type="TextureButton" parent="cc/Panel/vbox/hbox"]
+margin_left = 145.0
+margin_right = 286.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5

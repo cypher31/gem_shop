@@ -9,5 +9,5 @@ func _ready():
 
 
 func _level_pin_selected():
-	print(get_name()) #pin will need to bring up the excavation stage and free the level_select stage
+	utility.dialog_popup("level_cost_popup", true)
 	return

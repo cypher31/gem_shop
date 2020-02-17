@@ -23,6 +23,11 @@ script = ExtResource( 1 )
 
 [node name="level_select" parent="stage_container/stage_pop_up" instance=ExtResource( 2 )]
 
+[node name="dialog_container" type="CenterContainer" parent="stage_container"]
+margin_right = 900.0
+margin_bottom = 1000.0
+mouse_filter = 2
+
 [node name="GUI_container" type="Control" parent="."]
 margin_right = 900.0
 margin_bottom = 1600.0
