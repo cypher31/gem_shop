@@ -6,8 +6,8 @@
 [node name="level_location_pin" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -836.0
-margin_bottom = -1536.0
+margin_right = -900.0
+margin_bottom = -1600.0
 mouse_filter = 2
 script = ExtResource( 1 )
 
