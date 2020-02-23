@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://level_select/level_select.gd" type="Script" id=1]
 [ext_resource path="res://assets/prototype/buttonX.png" type="Texture" id=2]
 [ext_resource path="res://assets/prototype/background.png" type="Texture" id=3]
 [ext_resource path="res://level_location_pin/level_location_pin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/prototype/arrow_yellow.png" type="Texture" id=5]
 
 [node name="level_select" type="Node2D"]
 position = Vector2( 0, 100 )
@@ -40,6 +41,9 @@ margin_bottom = 40.0
 mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="level_location_pins" type="Control" parent="actors/gui/mc/active/gui_cont"]
 margin_right = 900.0
@@ -58,7 +62,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="map_current" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A"]
+[node name="map_current_A" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
@@ -96,7 +100,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="map_current" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA"]
+[node name="map_current_AA" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
@@ -134,7 +138,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="map_current" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA"]
+[node name="map_current_AAA" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
@@ -162,5 +166,21 @@ margin_left = 88.5311
 margin_top = 371.435
 margin_right = -803.469
 margin_bottom = -392.565
+
+[node name="button_swipe_left" type="TextureButton" parent="actors/gui/mc/active/gui_cont"]
+margin_left = 15.0
+margin_top = 532.0
+margin_right = 180.0
+margin_bottom = 631.0
+rect_rotation = 270.0
+texture_normal = ExtResource( 5 )
+
+[node name="button_swipe_right" type="TextureButton" parent="actors/gui/mc/active/gui_cont"]
+margin_left = 885.0
+margin_top = 368.0
+margin_right = 1050.0
+margin_bottom = 467.0
+rect_rotation = 90.0
+texture_normal = ExtResource( 5 )
 
 [node name="passive" type="Node2D" parent="actors/gui/mc"]

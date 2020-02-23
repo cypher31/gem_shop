@@ -69,6 +69,16 @@ var dialogSceneDict = {
 	"level_cost_popup" : level_cost_popup
 	}
 
+#background dictionary
+var map_background_1 = load("res://assets/prototype/background_1.png")
+var map_background_2 = load("res://assets/prototype/background_2.png")
+var map_background_3 = load("res://assets/prototype/background_3.png")
+
+var backgroundDict = {
+	"map_background_1" : map_background_1,
+	"map_background_2" : map_background_2,
+	"map_background_3" : map_background_3
+	}
 
 #active actor scene dictionary
 var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
