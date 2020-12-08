@@ -1,0 +1,186 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://level_select/level_select.gd" type="Script" id=1]
+[ext_resource path="res://assets/prototype/buttonX.png" type="Texture" id=2]
+[ext_resource path="res://assets/prototype/background.png" type="Texture" id=3]
+[ext_resource path="res://level_location_pin/level_location_pin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/prototype/arrow_yellow.png" type="Texture" id=5]
+
+[node name="level_select" type="Node2D"]
+position = Vector2( 0, 100 )
+script = ExtResource( 1 )
+
+[node name="actors" type="Node2D" parent="."]
+
+[node name="gui" type="Control" parent="actors"]
+mouse_filter = 2
+
+[node name="mc" type="MarginContainer" parent="actors/gui"]
+margin_right = 900.0
+margin_bottom = 800.0
+mouse_filter = 2
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="active" type="Node2D" parent="actors/gui/mc"]
+
+[node name="gui_cont" type="Control" parent="actors/gui/mc/active"]
+margin_right = 900.0
+margin_bottom = 800.0
+mouse_filter = 2
+
+[node name="button_close_stage" type="TextureButton" parent="actors/gui/mc/active/gui_cont"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_bottom = 40.0
+mouse_filter = 1
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="level_location_pins" type="Control" parent="actors/gui/mc/active/gui_cont"]
+margin_right = 900.0
+margin_bottom = 800.0
+
+[node name="TabContainer" type="TabContainer" parent="actors/gui/mc/active/gui_cont/level_location_pins"]
+margin_right = 900.0
+margin_bottom = 800.0
+tab_align = 0
+
+[node name="A" type="Tabs" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="map_current_A" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="level_location_pin" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A" instance=ExtResource( 4 )]
+margin_left = 706.64
+margin_top = 69.784
+margin_right = -185.36
+margin_bottom = -694.216
+
+[node name="level_location_pin2" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A" instance=ExtResource( 4 )]
+margin_left = 440.15
+margin_top = 449.162
+margin_right = -451.85
+margin_bottom = -314.838
+
+[node name="level_location_pin3" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A" instance=ExtResource( 4 )]
+margin_left = 138.498
+margin_top = 101.245
+margin_right = -753.502
+margin_bottom = -662.755
+
+[node name="level_location_pin4" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/A" instance=ExtResource( 4 )]
+margin_left = 108.888
+margin_top = 624.971
+margin_right = -783.112
+margin_bottom = -139.029
+
+[node name="AA" type="Tabs" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="map_current_AA" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="level_location_pin" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA" instance=ExtResource( 4 )]
+margin_left = 401.287
+margin_top = 674.938
+margin_right = -490.713
+margin_bottom = -89.0616
+
+[node name="level_location_pin2" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA" instance=ExtResource( 4 )]
+margin_left = 734.399
+margin_top = 671.237
+margin_right = -157.601
+margin_bottom = -92.7629
+
+[node name="level_location_pin3" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA" instance=ExtResource( 4 )]
+margin_left = 40.4149
+margin_top = 304.814
+margin_right = -851.585
+margin_bottom = -459.186
+
+[node name="level_location_pin4" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AA" instance=ExtResource( 4 )]
+margin_left = 453.104
+margin_top = 138.257
+margin_right = -438.896
+margin_bottom = -625.743
+
+[node name="AAA" type="Tabs" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="map_current_AAA" type="TextureRect" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="level_location_pin" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA" instance=ExtResource( 4 )]
+margin_left = 751.055
+margin_top = 641.627
+margin_right = -140.945
+margin_bottom = -122.373
+
+[node name="level_location_pin2" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA" instance=ExtResource( 4 )]
+margin_left = 804.723
+margin_top = 438.058
+margin_right = -87.2769
+margin_bottom = -325.942
+
+[node name="level_location_pin3" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA" instance=ExtResource( 4 )]
+margin_left = 23.7592
+margin_top = 19.8175
+margin_right = -868.241
+margin_bottom = -744.182
+
+[node name="level_location_pin4" parent="actors/gui/mc/active/gui_cont/level_location_pins/TabContainer/AAA" instance=ExtResource( 4 )]
+margin_left = 88.5311
+margin_top = 371.435
+margin_right = -803.469
+margin_bottom = -392.565
+
+[node name="button_swipe_left" type="TextureButton" parent="actors/gui/mc/active/gui_cont"]
+margin_left = 15.0
+margin_top = 532.0
+margin_right = 180.0
+margin_bottom = 631.0
+rect_rotation = 270.0
+texture_normal = ExtResource( 5 )
+
+[node name="button_swipe_right" type="TextureButton" parent="actors/gui/mc/active/gui_cont"]
+margin_left = 885.0
+margin_top = 368.0
+margin_right = 1050.0
+margin_bottom = 467.0
+rect_rotation = 90.0
+texture_normal = ExtResource( 5 )
+
+[node name="passive" type="Node2D" parent="actors/gui/mc"]

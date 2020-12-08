@@ -5,6 +5,8 @@ extends Node
 
 #game specific signals
 signal user_dig
+signal stage_pop_up
+signal level_accepted
 
 #general signals
 
@@ -54,12 +56,29 @@ var assetDict = {
 	}
 
 #stage scene dictionary
-
+var stage_level_select = load("res://level_select/level_select.tscn")
 
 var stageSceneDict = {
-
+"stage_level_select" : stage_level_select
 }
 
+#dialog option scene dictionary
+var level_cost_popup = load("res://level_cost_popup/level_cost_popup.tscn")
+
+var dialogSceneDict = {
+	"level_cost_popup" : level_cost_popup
+	}
+
+#background dictionary
+var map_background_1 = load("res://assets/prototype/background_1.png")
+var map_background_2 = load("res://assets/prototype/background_2.png")
+var map_background_3 = load("res://assets/prototype/background_3.png")
+
+var backgroundDict = {
+	"map_background_1" : map_background_1,
+	"map_background_2" : map_background_2,
+	"map_background_3" : map_background_3
+	}
 
 #active actor scene dictionary
 var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
@@ -140,10 +159,16 @@ func _ready():
 #	pass
 	
 	
-func sceneSwitch(scene): #add a "self" variable so the current scene can free itself before spawning the new screen
+func sceneSwitch(scene, bool_popup, current_scene): #add a "self" variable so the current scene can free itself before spawning the new screen
 	var instanceScene = stageSceneDict[scene].instance()
 	
-	get_node("/root/main/stage_container").add_child(instanceScene)
+	if bool_popup:
+		get_node("/root/main/stage_container/stage_pop_up").add_child(instanceScene)
+		emit_signal("stage_pop_up")
+	else:
+		get_node("/root/main/stage_container").add_child(instanceScene)
+	
+	current_scene.queue_free()
 	
 #	if scene == "stageHighScore":
 #		print(final_score)
@@ -152,7 +177,16 @@ func sceneSwitch(scene): #add a "self" variable so the current scene can free it
 #		pass
 #	instanceScene.set_position(Vector2(-960, -540))
 	pass
+
+
+func dialog_popup(scene, bool_exclusive):
+	var instance_dialog = dialogSceneDict[scene].instance()
 	
+	instance_dialog.set_exclusive(bool_exclusive)
+	
+	get_node("/root/main/stage_container/dialog_container").add_child(instance_dialog)
+	instance_dialog.popup()
+	return
 
 func spawn_object(object, parent, position):
 	var objectToInstance = object.instance()
