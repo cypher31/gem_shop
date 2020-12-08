@@ -20,6 +20,9 @@ margin_bottom = 1000.0
 mouse_filter = 1
 popup_exclusive = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="level_select" parent="stage_container/stage_pop_up" instance=ExtResource( 2 )]
 
@@ -32,6 +35,9 @@ mouse_filter = 2
 margin_right = 900.0
 margin_bottom = 1600.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PanelContainer" type="PanelContainer" parent="GUI_container"]
 anchor_left = 1.0

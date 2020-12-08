@@ -255,7 +255,7 @@ func tile_destroy(tile):
 	tile.queue_free()
 	
 	var timer = Timer.new()
-#	timer.connect("timeout", self, "__coin_timer_timeout")
+	timer.connect("timeout", self, "__coin_timer_timeout")
 	add_child(timer)
 	timer.set_wait_time(.2)
 	timer.set_one_shot(true)
