@@ -10,10 +10,10 @@ func _ready():
 	pass # Replace with function body.
 
 func __update_dig_counter():
-	var bar = $hbox/cc/progress_bar
-	var bar_count = $hbox/mc/dig_count_left
+	var bar = $cc/progress_bar
+	var bar_count = $mc/dig_count_left
 	
-	var current_value = $hbox/cc/progress_bar.get_value()
+	var current_value = $cc/progress_bar.get_value()
 	var new_value = current_value - 1
 	
 	bar.set_value(new_value)
