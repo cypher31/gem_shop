@@ -27,6 +27,9 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -278.0
 margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="coin_counter" parent="GUI_container/PanelContainer" instance=ExtResource( 2 )]
 margin_top = 32.0

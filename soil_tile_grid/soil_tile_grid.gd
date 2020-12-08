@@ -3,7 +3,7 @@ extends Node2D
 #node for generating and holding excavation grid layouts
 var tile_name : String = "soil_tile_node"
 
-var grid_size : Vector2 = Vector2(5, 3)
+var grid_size : Vector2 = Vector2(5, 3) #needs to be variable input here
 var tile_size : Vector2 = utility.tile_size
 var grid_depth : int = 3
 var z_draw_depth : int = 0

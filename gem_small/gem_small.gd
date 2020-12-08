@@ -6,7 +6,7 @@ var gem_quality : String = "rough"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	utility.connect("user_dig", self, "__check_overlap")
+	utility.connect("user_dig", self, "__check_overlap") #when the user destroys a tile a timer is set to emit this signal
 	pass # Replace with function body.
 
 
