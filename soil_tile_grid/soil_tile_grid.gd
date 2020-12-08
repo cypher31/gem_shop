@@ -3,7 +3,7 @@ extends Node2D
 #node for generating and holding excavation grid layouts
 var tile_name : String = "soil_tile_node"
 
-var grid_size : Vector2 = Vector2(5, 3) #needs to be variable input here
+var grid_size : Vector2 = Vector2(10, 3) #needs to be variable input here
 var tile_size : Vector2 = utility.tile_size
 var grid_depth : int = 3
 var z_draw_depth : int = 0
@@ -18,6 +18,8 @@ var tile_position_array : Array = [] #array to hold locations of tiles
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_center_grid()
+	
 	spawn_tile_grid(grid_size_calc(grid_size), grid_depth)
 	spawn_coins(tile_position_array, grid_depth)
 	spawn_gems(tile_position_array, grid_depth)
@@ -37,6 +39,8 @@ func grid_size_calc(grid_size):
 	
 	
 func spawn_tile_grid(grid, depth): #grid = grid_spawn_array
+	var tile = utility.spawn_object(utility.active_actor_dict[tile_name], self, position)
+	
 	for i in range(0, depth):
 		var position : Vector2
 		for j in range(0, grid.size()):
@@ -46,10 +50,10 @@ func spawn_tile_grid(grid, depth): #grid = grid_spawn_array
 				else:
 					position = Vector2(tile_size.x + (k - 0.5) * utility.tile_size.x, j * (utility.tile_size.y - tile_align_mod) - z_draw_depth * tile_depth_mod)
 					
-				var tile = utility.spawn_object(utility.active_actor_dict[tile_name], self, position)
-				tile_position_array.append(tile.get_global_position())
-				tile.set_z_index(z_draw_depth)
-				tile.soil_column = soil_column
+				var tile_instance = utility.spawn_object(utility.active_actor_dict[tile_name], self, position)
+				tile_position_array.append(tile_instance.get_global_position())
+				tile_instance.set_z_index(z_draw_depth)
+				tile_instance.soil_column = soil_column
 
 				soil_column += 1
 				pass
@@ -88,3 +92,12 @@ func spawn_gems(tile_positions, depth):
 		gem.set_z_index(random_depth)
 		pass
 	pass
+
+
+func _center_grid():
+	var tile_size_x = tile_size.x
+	var total_x_size = tile_size.x * grid_size.x
+	
+	set_position(Vector2(get_position().x - total_x_size/2, get_position().y))
+	
+	return

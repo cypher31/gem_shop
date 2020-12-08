@@ -7,6 +7,7 @@ extends Node
 signal user_dig
 signal stage_pop_up
 signal level_accepted
+signal clear_current_scene
 
 #general signals
 
@@ -57,9 +58,11 @@ var assetDict = {
 
 #stage scene dictionary
 var stage_level_select = load("res://level_select/level_select.tscn")
+var stage_field_camp = load("res://field_camp/field_camp.tscn")
 
 var stageSceneDict = {
-"stage_level_select" : stage_level_select
+"stage_level_select" : stage_level_select,
+"stage_field_camp" : stage_field_camp
 }
 
 #dialog option scene dictionary
@@ -159,23 +162,13 @@ func _ready():
 #	pass
 	
 	
-func sceneSwitch(scene, bool_popup, current_scene): #add a "self" variable so the current scene can free itself before spawning the new screen
+func sceneSwitch(scene): #add a "self" variable so the current scene can free itself before spawning the new screen
 	var instanceScene = stageSceneDict[scene].instance()
 	
-	if bool_popup:
-		get_node("/root/main/stage_container/stage_pop_up").add_child(instanceScene)
-		emit_signal("stage_pop_up")
-	else:
-		get_node("/root/main/stage_container").add_child(instanceScene)
+	get_node("/root/main/stage_container").add_child(instanceScene)
 	
-	current_scene.queue_free()
-	
-#	if scene == "stageHighScore":
-#		print(final_score)
-#		instanceScene.final_score = final_score
-#		instanceScene.loadHighscores(final_score)
-#		pass
-#	instanceScene.set_position(Vector2(-960, -540))
+	#remove current screen variable and replace with signal
+	emit_signal("clear_current_scene")
 	pass
 
 
@@ -286,7 +279,7 @@ func get_gem(gem_actor, gem_size, gem_type, gem_quality):
 		var asset_path = "res://assets/actor_passive/gem_small/gem_"
 		var asset = load(asset_path + gem_type + ".png")
 		
-		var grid = gem_small_container.get_node("PanelContainer/gem_grid")
+		var grid = gem_small_container.get_node("gem_grid")
 		
 		var gem = TextureRect.new()
 		gem.set_texture(asset)

@@ -1,36 +1,50 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://dig_counter/dig_counter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gem_storage_container/gem_storage_container.tscn" type="PackedScene" id=2]
 [ext_resource path="res://soil_tile_grid/soil_tile_grid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://coin_counter/coin_counter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://coin_counter/coin_counter.gd" type="Script" id=5]
 
 [node name="field_camp" type="Node2D"]
 
 [node name="actors" type="Node2D" parent="."]
 
-[node name="gui" type="Control" parent="actors"]
-
-[node name="dig_counter" parent="actors/gui" instance=ExtResource( 1 )]
-margin_left = 99.3192
-margin_top = 852.775
-margin_right = 99.3192
-margin_bottom = 852.775
-
-[node name="gem_storage_container" parent="actors/gui" instance=ExtResource( 2 )]
-margin_left = 387.173
-margin_top = 842.672
-margin_right = 387.173
-margin_bottom = 842.672
-
-[node name="coin_count" parent="actors/gui" instance=ExtResource( 4 )]
-script = ExtResource( 5 )
-
 [node name="active" type="Node2D" parent="actors"]
 
 [node name="soil_tile_grid" parent="actors/active" instance=ExtResource( 3 )]
+position = Vector2( 450, 1250 )
 
 [node name="passive" type="Node2D" parent="actors"]
+
+[node name="gui" type="Control" parent="actors/passive"]
+margin_top = 600.0
+margin_right = 900.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 900, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="actors/passive/gui"]
+margin_right = 900.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 900, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dig_counter" parent="actors/passive/gui/hbox" instance=ExtResource( 1 )]
+margin_left = 203.0
+margin_right = 450.0
+margin_bottom = 150.0
+size_flags_horizontal = 14
+
+[node name="gem_storage_container" parent="actors/passive/gui/hbox" instance=ExtResource( 2 )]
+margin_left = 450.0
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 150.0
+size_flags_horizontal = 2
 
 [editable path="actors/active/soil_tile_grid"]

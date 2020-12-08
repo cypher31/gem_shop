@@ -9,22 +9,20 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
 
-[node name="dig_counter" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -500.0
-margin_bottom = -1500.0
-script = ExtResource( 1 )
-
-[node name="hbox" type="HBoxContainer" parent="."]
-margin_right = 400.0
+[node name="dig_counter" type="HBoxContainer"]
+margin_right = 250.0
 margin_bottom = 100.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
-[node name="cc" type="CenterContainer" parent="hbox"]
+[node name="cc" type="CenterContainer" parent="."]
 margin_right = 200.0
 margin_bottom = 100.0
 
-[node name="progress_bar" type="ProgressBar" parent="hbox/cc"]
+[node name="progress_bar" type="ProgressBar" parent="cc"]
 margin_top = 37.0
 margin_right = 200.0
 margin_bottom = 62.0
@@ -34,13 +32,13 @@ max_value = 10.0
 value = 10.0
 percent_visible = false
 
-[node name="mc" type="MarginContainer" parent="hbox"]
+[node name="mc" type="MarginContainer" parent="."]
 margin_left = 204.0
 margin_right = 247.0
 margin_bottom = 100.0
 custom_constants/margin_left = 15
 
-[node name="dig_count_left" type="Label" parent="hbox/mc"]
+[node name="dig_count_left" type="Label" parent="mc"]
 margin_left = 15.0
 margin_top = 38.0
 margin_right = 43.0
