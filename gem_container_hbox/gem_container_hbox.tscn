@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gem_container_hbox/gem_container_hbox.gd" type="Script" id=1]
+[ext_resource path="res://gem_storage_container/gem_storage_container.tscn" type="PackedScene" id=2]
+
+[node name="gem_hbox" type="HBoxContainer"]
+margin_left = 462.0
+margin_right = 900.0
+margin_bottom = 168.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gem_storage_small" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 168.0
+margin_bottom = 168.0
+container_size = "small"
+
+[node name="gem_storage_med" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 168.0
+margin_bottom = 168.0
+container_size = "med"
+
+[node name="gem_storage_large" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 168.0
+margin_bottom = 168.0
+container_size = "large"

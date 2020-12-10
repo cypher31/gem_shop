@@ -17,7 +17,11 @@ __meta__ = {
 [node name="gem_grid" type="GridContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 143.0
-margin_bottom = 143.0
+margin_right = 161.0
+margin_bottom = 161.0
+rect_min_size = Vector2( 154, 154 )
 custom_constants/hseparation = 0
 columns = 3
+__meta__ = {
+"_editor_description_": "154x154 grid to hold a 3x3 gem array. Gems will be 50x50px in size"
+}
