@@ -57,10 +57,12 @@ var assetDict = {
 	}
 
 #stage scene dictionary
+var stage_store_front = load("res://stage_store_front/stage_store_front.tscn")
 var stage_level_select = load("res://level_select/level_select.tscn")
 var stage_field_camp = load("res://field_camp/field_camp.tscn")
 
 var stageSceneDict = {
+"stage_store_front" : stage_store_front,
 "stage_level_select" : stage_level_select,
 "stage_field_camp" : stage_field_camp
 }
@@ -132,12 +134,13 @@ var gem_count_dict = {
 	}
 	
 	
-	
-	
 var unlock_dict = {
 	"gem_storage_small" : true,
-	"gem_storage_med" : true,
-	"gem_storage_large" : true,
+	"gem_storage_med" : false,
+	"gem_storage_large" : false,
+	"gem_bucket_1" : true,
+	"gem_bucket_2" : false,
+	"gem_bucket_3" : false,
 }
 	
 func _ready():

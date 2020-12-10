@@ -36,22 +36,23 @@ __meta__ = {
 
 [node name="space_left" type="Container" parent="actors/passive/gui/hbox"]
 margin_right = 25.0
-margin_bottom = 168.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="dig_counter" parent="actors/passive/gui/hbox" instance=ExtResource( 1 )]
 margin_left = 190.0
 margin_right = 437.0
-margin_bottom = 168.0
+margin_bottom = 130.0
 size_flags_horizontal = 10
 
 [node name="gem_container_hbox" parent="actors/passive/gui/hbox" instance=ExtResource( 2 )]
 margin_right = 850.0
+margin_bottom = 130.0
 
 [node name="space_right" type="Container" parent="actors/passive/gui/hbox"]
 margin_left = 875.0
 margin_right = 900.0
-margin_bottom = 168.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 25, 0 )
 
 [editable path="actors/active/soil_tile_grid"]
