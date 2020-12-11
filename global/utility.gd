@@ -121,16 +121,16 @@ var sfxDict = {
 #dictionary to hold all of the users gems
 var gem_sizes : Dictionary = {"small" : 0, "med" : 0, "large" : 0}
 
-var jade_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
-var ruby_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var emerald_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var diamond_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var jade_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
+var ruby_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var emerald_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var amber_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
 
 var gem_count_dict = {
 	"jade" : jade_quality,
 	"ruby" : ruby_quality,
 	"emerald" : emerald_quality,
-	"diamond" : diamond_quality,
+	"amber" : amber_quality,
 	}
 	
 	
