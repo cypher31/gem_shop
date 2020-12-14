@@ -12,7 +12,6 @@ func _ready():
 	var start_field_camp = $camp_select/mc/pc/vbox/button_start_field_camp
 	
 	button_field_camp.connect("button_up", self, "_camp_select_pop")
-	start_field_camp.connect("button_up", utility, "sceneSwitch", ["stage_field_camp"])
 	pass # Replace with function body.
 
 
@@ -20,5 +19,6 @@ func _camp_select_pop():
 	var camp_select_pop = $camp_select
 	
 	camp_select_pop.popup_centered()
-	
 	return
+	
+

@@ -8,6 +8,7 @@ signal user_dig
 signal stage_pop_up
 signal level_accepted
 signal clear_current_scene
+signal update_gem #update spawned gems to have the correct type
 
 #general signals
 
@@ -181,6 +182,23 @@ func sceneSwitch(scene): #add a "self" variable so the current scene can free it
 	#remove current screen variable and replace with signal
 	emit_signal("clear_current_scene")
 	pass
+
+
+func load_field_camp(params):
+	var camp_instance = stageSceneDict["stage_field_camp"].instance()
+	var gem_type = params["gem_type"]
+	var gem_grade = params["gem_grade"]
+	
+	var camp_loader = camp_instance.get_node("actors/active/soil_tile_grid")
+	camp_loader.gem_type = gem_type
+	camp_loader.gem_grade = gem_grade
+		
+	get_node("/root/main/stage_container").add_child(camp_instance)
+
+	#remove current screen variable and replace with signal
+	emit_signal("clear_current_scene")
+	
+	return
 
 
 func dialog_popup(scene, bool_exclusive):

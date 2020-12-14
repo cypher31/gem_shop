@@ -9,6 +9,9 @@ var grid_depth : int = 3
 var z_draw_depth : int = 0
 var soil_column : int = 0
 
+var gem_type : String
+var gem_grade : String
+
 var grid_spawn_array : Array
 
 var tile_align_mod : float = 24 #align the tiles so that they are touching
@@ -18,8 +21,16 @@ var tile_position_array : Array = [] #array to hold locations of tiles
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_center_grid()
+	if gem_grade.to_lower() == "rough":
+		grid_size = Vector2(5,3)
+	elif gem_grade.to_lower() == "a":
+		grid_size = Vector2(7,4)
+	elif gem_grade.to_lower() == "aa":
+		grid_size = Vector2(9,5)
+	elif gem_grade.to_lower() == "aaa":
+		grid_size = Vector2(11,6)
 	
+	_center_grid()
 	spawn_tile_grid(grid_size_calc(grid_size), grid_depth)
 	spawn_coins(tile_position_array, grid_depth)
 	spawn_gems(tile_position_array, grid_depth)
@@ -81,6 +92,7 @@ func spawn_coins(tile_positions, depth):
 	
 func spawn_gems(tile_positions, depth):
 	var total_gems : int
+	var gem_type_instance = gem_type 
 
 	total_gems = sqrt(tile_positions.size()) * 2
 
@@ -89,6 +101,8 @@ func spawn_gems(tile_positions, depth):
 		var random_depth = (randi() % depth) - 1
 
 		var gem = utility.spawn_object(utility.active_actor_dict["gem_small"], $gem_spawn,tile_positions[random_num])
+		utility.emit_signal("update_gem", gem_type_instance, gem_grade)
+		gem.gem_type = gem_type_instance
 		gem.set_z_index(random_depth)
 		pass
 	pass
