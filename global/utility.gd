@@ -187,11 +187,11 @@ func sceneSwitch(scene): #add a "self" variable so the current scene can free it
 func load_field_camp(params):
 	var camp_instance = stageSceneDict["stage_field_camp"].instance()
 	var gem_type = params["gem_type"]
-	var gem_grade = params["gem_grade"]
+	var camp_type = params["camp_type"]
 	
 	var camp_loader = camp_instance.get_node("actors/active/soil_tile_grid")
 	camp_loader.gem_type = gem_type
-	camp_loader.gem_grade = gem_grade
+	camp_loader.camp_type = camp_type
 		
 	get_node("/root/main/stage_container").add_child(camp_instance)
 

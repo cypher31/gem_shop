@@ -10,7 +10,8 @@ var z_draw_depth : int = 0
 var soil_column : int = 0
 
 var gem_type : String
-var gem_grade : String
+var camp_type : String
+#var gem_grade : String
 
 var grid_spawn_array : Array
 
@@ -21,13 +22,13 @@ var tile_position_array : Array = [] #array to hold locations of tiles
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if gem_grade.to_lower() == "rough":
+	if camp_type.to_lower() == "investigation":
 		grid_size = Vector2(5,3)
-	elif gem_grade.to_lower() == "a":
+	elif camp_type.to_lower() == "expedition":
 		grid_size = Vector2(7,4)
-	elif gem_grade.to_lower() == "aa":
+	elif camp_type.to_lower() == "excursion":
 		grid_size = Vector2(9,5)
-	elif gem_grade.to_lower() == "aaa":
+	elif camp_type.to_lower() == "commercial":
 		grid_size = Vector2(11,6)
 	
 	_center_grid()
@@ -93,15 +94,59 @@ func spawn_coins(tile_positions, depth):
 func spawn_gems(tile_positions, depth):
 	var total_gems : int
 	var gem_type_instance = gem_type 
-
+	
+	var chance_rough : float
+	var chance_a : float
+	var chance_aa : float
+	var chance_aaa : float
+	
 	total_gems = sqrt(tile_positions.size()) * 2
-
+	print(camp_type)
+	if camp_type == "investigation":
+		chance_rough = 0.80
+		chance_a = 0.10
+		chance_aa = 0.06
+		chance_aaa = 0.04
+	elif camp_type == "expedition":
+		chance_rough = 0.60
+		chance_a = 0.25
+		chance_aa = 0.10
+		chance_aaa = 0.05
+	elif camp_type == "excursion":
+		chance_rough = 0.40
+		chance_a = 0.30
+		chance_aa = 0.20
+		chance_aaa = 0.10
+	elif camp_type == "commercial":
+		chance_rough = 0.20
+		chance_a = 0.40
+		chance_aa = 0.25
+		chance_aaa = 0.15
+	
+	var acc_weight_rough : float = chance_rough
+	var acc_weight_a : float = chance_rough + chance_a
+	var acc_weight_aa : float = chance_rough + chance_a + chance_aa
+	var acc_weight_aaa : float = chance_rough + chance_a + chance_aa + chance_aaa
+	var total_roll_weight : float = chance_rough + chance_a + chance_aa + chance_aaa
+	
 	for i in range(0, total_gems):
 		var random_num = randi() % tile_positions.size()
 		var random_depth = (randi() % depth) - 1
-
+		
+		var random_num_grade = rand_range(0,1)
+		var gem_grade : String
+		
+		if random_num_grade < acc_weight_rough:
+			gem_grade = "rough"
+		elif random_num_grade < acc_weight_a and random_num_grade > acc_weight_rough:
+			gem_grade = "a"
+		elif random_num_grade < acc_weight_aa and random_num_grade > acc_weight_a:
+			gem_grade = "aa"
+		elif random_num_grade < acc_weight_aaa and random_num_grade > acc_weight_aa:
+			gem_grade = "aaa"
+			
 		var gem = utility.spawn_object(utility.active_actor_dict["gem_small"], $gem_spawn,tile_positions[random_num])
-		utility.emit_signal("update_gem", gem_type_instance, gem_grade)
+		utility.emit_signal("update_gem", gem_type_instance, gem_grade, camp_type)
 		gem.gem_type = gem_type_instance
 		gem.set_z_index(random_depth)
 		pass
