@@ -8,6 +8,7 @@ signal user_dig
 signal stage_pop_up
 signal level_accepted
 signal clear_current_scene
+signal update_gem #update spawned gems to have the correct type
 
 #general signals
 
@@ -121,16 +122,16 @@ var sfxDict = {
 #dictionary to hold all of the users gems
 var gem_sizes : Dictionary = {"small" : 0, "med" : 0, "large" : 0}
 
-var jade_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
-var ruby_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var emerald_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var diamond_quality : Dictionary = {"super" : {"small" : 0, "med" : 0, "large" : 0}, "AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var jade_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
+var ruby_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var emerald_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var amber_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
 
 var gem_count_dict = {
 	"jade" : jade_quality,
 	"ruby" : ruby_quality,
 	"emerald" : emerald_quality,
-	"diamond" : diamond_quality,
+	"amber" : amber_quality,
 	}
 	
 	
@@ -181,6 +182,23 @@ func sceneSwitch(scene): #add a "self" variable so the current scene can free it
 	#remove current screen variable and replace with signal
 	emit_signal("clear_current_scene")
 	pass
+
+
+func load_field_camp(params):
+	var camp_instance = stageSceneDict["stage_field_camp"].instance()
+	var gem_type = params["gem_type"]
+	var camp_type = params["camp_type"]
+	
+	var camp_loader = camp_instance.get_node("actors/active/soil_tile_grid")
+	camp_loader.gem_type = gem_type
+	camp_loader.camp_type = camp_type
+		
+	get_node("/root/main/stage_container").add_child(camp_instance)
+
+	#remove current screen variable and replace with signal
+	emit_signal("clear_current_scene")
+	
+	return
 
 
 func dialog_popup(scene, bool_exclusive):

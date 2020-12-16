@@ -7,6 +7,15 @@ var gem_quality : String = "rough"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	utility.connect("user_dig", self, "__check_overlap") #when the user destroys a tile a timer is set to emit this signal
+	utility.connect("update_gem", self, "_update_gem")
+	
+	#set texture
+	var sprite_gem = $Sprite
+
+	var sprite_path = "res://assets/actor_passive/gem_small/gem_"
+	var sprite = load(sprite_path + gem_type + ".png")
+	
+	sprite_gem.set_texture(sprite)
 	pass # Replace with function body.
 
 
@@ -38,3 +47,13 @@ func __check_overlap():
 	z_depth_array.clear()
 	
 	pass
+	
+func _update_gem(gem_type, gem_grade, camp_type):
+	#set texture
+	var sprite_gem = $Sprite
+
+	var sprite_path = "res://assets/actor_passive/gem_small/gem_"
+	var sprite = load(sprite_path + gem_type + ".png")
+	
+	sprite_gem.set_texture(sprite)
+	return
