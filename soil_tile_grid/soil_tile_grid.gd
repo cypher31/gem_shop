@@ -144,7 +144,7 @@ func spawn_gems(tile_positions, depth):
 			gem_grade = "aa"
 		elif random_num_grade < acc_weight_aaa and random_num_grade > acc_weight_aa:
 			gem_grade = "aaa"
-			
+
 		var gem = utility.spawn_object(utility.active_actor_dict["gem_small"], $gem_spawn,tile_positions[random_num])
 		utility.emit_signal("update_gem", gem_type_instance, gem_grade, camp_type)
 		gem.gem_type = gem_type_instance

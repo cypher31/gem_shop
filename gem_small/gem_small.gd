@@ -48,7 +48,7 @@ func __check_overlap():
 	
 	pass
 	
-func _update_gem(gem_type):
+func _update_gem(gem_type, gem_grade, camp_type):
 	#set texture
 	var sprite_gem = $Sprite
 
