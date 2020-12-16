@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main_menu/main_menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/prototype/coin.png" type="Texture" id=2]
 [ext_resource path="res://coin_counter/coin_counter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/prototype/KenVector Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://coin_counter/coin_counter.gd" type="Script" id=5]
 [ext_resource path="res://main/stage_container.gd" type="Script" id=6]
+[ext_resource path="res://main/GUI_container.gd" type="Script" id=7]
+[ext_resource path="res://popup_global_settings/popup_global_settings.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -20,6 +23,7 @@ script = ExtResource( 6 )
 margin_right = 900.0
 margin_bottom = 1600.0
 mouse_filter = 2
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,3 +43,16 @@ margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 script = ExtResource( 5 )
+
+[node name="button_settings_global" type="TextureButton" parent="GUI_container"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="popup_global_settings" parent="GUI_container/button_settings_global" instance=ExtResource( 8 )]
+visible = false
