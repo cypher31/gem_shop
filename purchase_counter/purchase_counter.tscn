@@ -27,7 +27,6 @@ position = Vector2( 32, -160 )
 shape = SubResource( 1 )
 
 [node name="gem_bucket_1" type="TextureRect" parent="."]
-visible = false
 margin_top = -80.0
 margin_right = 128.0
 margin_bottom = 48.0
@@ -52,6 +51,15 @@ margin_top = -368.0
 margin_right = 128.0
 margin_bottom = -240.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_purchase_counter" type="TextureButton" parent="."]
+margin_left = -64.0
+margin_top = -384.0
+margin_right = 128.0
+margin_bottom = 64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

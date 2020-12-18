@@ -316,6 +316,6 @@ func get_gem(gem_actor, gem_size, gem_type, gem_quality):
 		grid.add_child(gem)
 		
 		gem_count_dict[gem_type][gem_quality][gem_size] += 1
-		
 		pass
+	print(gem_count_dict)
 	pass
