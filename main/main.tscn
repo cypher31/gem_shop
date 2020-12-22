@@ -55,3 +55,4 @@ __meta__ = {
 }
 
 [node name="popup_global_settings" parent="GUI_container/button_settings_global" instance=ExtResource( 8 )]
+visible = false
