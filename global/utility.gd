@@ -120,12 +120,10 @@ var sfxDict = {
 
 
 #dictionary to hold all of the users gems
-var gem_sizes : Dictionary = {"small" : 0, "med" : 0, "large" : 0}
-
-var jade_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
-var ruby_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var emerald_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var amber_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var jade_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
+var ruby_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
+var emerald_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
+var amber_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
 
 var gem_count_dict = {
 	"jade" : jade_quality,
@@ -302,20 +300,17 @@ func get_coin(coin):
 	
 
 func get_gem(gem_actor, gem_size, gem_type, gem_quality):
-	if gem_size == "small":
-		gem_actor.queue_free()
-		
-		var asset_path = "res://assets/actor_passive/gem_small/gem_"
-		var asset = load(asset_path + gem_type + ".png")
-		
-		var grid = gem_small_container.get_node("gem_grid")
-		
-		var gem = TextureRect.new()
-		gem.set_texture(asset)
-		
-		grid.add_child(gem)
-		
-		gem_count_dict[gem_type][gem_quality][gem_size] += 1
-		pass
-	print(gem_count_dict)
+	gem_actor.queue_free()
+	
+	var asset_path = "res://assets/actor_passive/gem_small/gem_"
+	var asset = load(asset_path + gem_type + ".png")
+	
+	var grid = gem_small_container.get_node("gem_grid")
+	
+	var gem = TextureRect.new()
+	gem.set_texture(asset)
+	
+	grid.add_child(gem)
+	
+	gem_count_dict[gem_type][gem_quality]["up"] += 1
 	pass

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://popup_collection/popup_collection.gd" type="Script" id=1]
 [ext_resource path="res://assets/prototype/arrow_yellow.png" type="Texture" id=2]
 [ext_resource path="res://assets/actor_passive/gem_small/gem_jade.png" type="Texture" id=3]
 [ext_resource path="res://assets/prototype/buttonX.png" type="Texture" id=4]
+[ext_resource path="res://assets/actor_passive/gem_small/gem_amber.png" type="Texture" id=5]
+[ext_resource path="res://assets/actor_passive/gem_small/gem_emerald.png" type="Texture" id=6]
 
 [node name="popup_collection" type="PopupPanel"]
 visible = true
@@ -11,9 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
 margin_top = 32.0
-margin_right = -32.0
-margin_bottom = -32.0
-rect_min_size = Vector2( 844, 1536 )
+margin_right = -23.9999
+margin_bottom = -168.0
+rect_min_size = Vector2( 844, 1400 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,7 +25,7 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 840.0
-margin_bottom = 1532.0
+margin_bottom = 1396.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 32
@@ -35,8 +37,8 @@ __meta__ = {
 [node name="pc" type="PanelContainer" parent="mc"]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 804.0
-margin_bottom = 1496.0
+margin_right = 822.0
+margin_bottom = 1360.0
 rect_min_size = Vector2( 772, 536 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,11 +47,12 @@ __meta__ = {
 [node name="vbox" type="VBoxContainer" parent="mc/pc"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 765.0
-margin_bottom = 1457.0
+margin_right = 783.0
+margin_bottom = 1321.0
+custom_constants/separation = 25
 
 [node name="hbox" type="HBoxContainer" parent="mc/pc/vbox"]
-margin_right = 758.0
+margin_right = 776.0
 margin_bottom = 100.0
 custom_constants/separation = 0
 
@@ -61,7 +64,7 @@ texture_normal = ExtResource( 4 )
 
 [node name="mc" type="MarginContainer" parent="mc/pc/vbox/hbox"]
 margin_left = 100.0
-margin_right = 758.0
+margin_right = 776.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_constants/margin_left = 249
@@ -77,41 +80,118 @@ align = 1
 valign = 1
 
 [node name="hbox_gem_type" type="HBoxContainer" parent="mc/pc/vbox"]
-margin_top = 104.0
-margin_right = 758.0
-margin_bottom = 204.0
+margin_top = 125.0
+margin_right = 776.0
+margin_bottom = 225.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="button_type_left" type="TextureButton" parent="mc/pc/vbox/hbox_gem_type"]
-margin_left = 42.0
-margin_right = 207.0
+margin_left = 45.0
+margin_right = 210.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 6
 texture_normal = ExtResource( 2 )
 
 [node name="texture_gem_type" type="TextureRect" parent="mc/pc/vbox/hbox_gem_type"]
-margin_left = 254.0
-margin_right = 504.0
+margin_left = 260.0
+margin_right = 516.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="button_type_right" type="TextureButton" parent="mc/pc/vbox/hbox_gem_type"]
-margin_left = 550.0
-margin_right = 715.0
+margin_left = 565.0
+margin_right = 730.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 6
 texture_normal = ExtResource( 2 )
 
 [node name="GridContainer" type="GridContainer" parent="mc/pc/vbox"]
-margin_top = 208.0
-margin_right = 758.0
-margin_bottom = 1450.0
+margin_top = 250.0
+margin_right = 776.0
+margin_bottom = 1314.0
 size_flags_vertical = 3
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
 columns = 3
+
+[node name="rough" type="VBoxContainer" parent="mc/pc/vbox/GridContainer"]
+margin_right = 256.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
+
+[node name="Label" type="Label" parent="mc/pc/vbox/GridContainer/rough"]
+margin_right = 256.0
+margin_bottom = 14.0
+text = "ROUGH"
+align = 1
+valign = 1
+
+[node name="texture_gem" type="TextureRect" parent="mc/pc/vbox/GridContainer/rough"]
+margin_top = 18.0
+margin_right = 256.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="gem_count_UP" type="Label" parent="mc/pc/vbox/GridContainer/rough"]
+margin_top = 224.0
+margin_right = 256.0
+margin_bottom = 238.0
+text = "UP: 0000"
+align = 1
+valign = 1
+
+[node name="gem_count_P" type="Label" parent="mc/pc/vbox/GridContainer/rough"]
+margin_top = 242.0
+margin_right = 256.0
+margin_bottom = 256.0
+text = " P: 0000"
+align = 1
+valign = 1
+
+[node name="a" type="VBoxContainer" parent="mc/pc/vbox/GridContainer"]
+margin_left = 256.0
+margin_right = 512.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
+
+[node name="Label" type="Label" parent="mc/pc/vbox/GridContainer/a"]
+margin_right = 256.0
+margin_bottom = 14.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="texture_gem" type="TextureRect" parent="mc/pc/vbox/GridContainer/a"]
+margin_top = 18.0
+margin_right = 256.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="gem_count_UP" type="Label" parent="mc/pc/vbox/GridContainer/a"]
+margin_top = 224.0
+margin_right = 256.0
+margin_bottom = 238.0
+text = "UP: 0000"
+align = 1
+valign = 1
+
+[node name="gem_count_P" type="Label" parent="mc/pc/vbox/GridContainer/a"]
+margin_top = 242.0
+margin_right = 256.0
+margin_bottom = 256.0
+text = " P: 0000"
+align = 1
+valign = 1

@@ -24,7 +24,7 @@ func _camp_select_pop():
 	return
 	
 func _view_collection_pop():
-	var view_selection_pop = $camp_select
+	var view_selection_pop = $popup_collection
 	
 	view_selection_pop.popup_centered()
 	return
