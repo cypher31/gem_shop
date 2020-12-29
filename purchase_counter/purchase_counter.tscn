@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://purchase_counter/purchase_counter.gd" type="Script" id=2]
 [ext_resource path="res://popup_purchase/popup_purchase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gem_bucket/gem_bucket.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 224 )
@@ -27,30 +28,21 @@ texture = ExtResource( 1 )
 position = Vector2( 32, -160 )
 shape = SubResource( 1 )
 
-[node name="gem_bucket_1" type="TextureButton" parent="."]
-visible = false
-margin_top = -80.0
-margin_right = 128.0
-margin_bottom = 48.0
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="gem_bucket_1" parent="." instance=ExtResource( 4 )]
+visible = true
 
-[node name="gem_bucket_2" type="TextureButton" parent="."]
-visible = false
+[node name="gem_bucket_2" parent="." instance=ExtResource( 4 )]
 margin_top = -224.0
-margin_right = 128.0
 margin_bottom = -96.0
-disabled = true
-texture_normal = ExtResource( 1 )
 
-[node name="gem_bucket_3" type="TextureButton" parent="."]
-visible = false
+[node name="gem_bucket_3" parent="." instance=ExtResource( 4 )]
 margin_top = -368.0
-margin_right = 128.0
 margin_bottom = -240.0
-disabled = true
-texture_normal = ExtResource( 1 )
 
 [node name="popup_purchase" parent="." instance=ExtResource( 3 )]
+
+[editable path="gem_bucket_1"]
+
+[editable path="gem_bucket_2"]
+
+[editable path="gem_bucket_3"]

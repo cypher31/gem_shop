@@ -2,10 +2,10 @@ extends PopupPanel
 
 #script that handles gem selection for purchase counter
 var gem_types : Array = ["amber", "emerald", "jade", "ruby"]
-
-
 var curr_type_array_pos : int = 0 #keep track of the current position in the gem type array
+var curr_bucket #the current bucket selected
 
+signal update_bucket_texture
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var button_type_right = $mc/pc/vbox/hbox_gem_type/button_type_right
@@ -14,8 +14,7 @@ func _ready():
 	
 	button_type_right.connect("button_down", self, "_type_update", [1])
 	button_type_left.connect("button_down", self, "_type_update", [-1])
-	
-	button_set.connect("button_down", self, "_field_camp_param_setter")
+	button_set.connect("button_down", self, "_set_bucket_texture")
 	
 	#set initial gem_type
 	var label_gem_type = $mc/pc/vbox/label_gem_type
@@ -48,4 +47,9 @@ func _type_update(dir):
 	texture_gem_type.set_texture(texture)
 	
 	curr_type_array_pos = next_array_pos #update array position
+	return
+
+func _set_bucket_texture():
+	emit_signal("update_bucket_texture", curr_bucket, gem_types[curr_type_array_pos])
+	hide()
 	return

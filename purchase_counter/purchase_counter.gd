@@ -10,23 +10,46 @@ func _ready():
 	var bucket_1 = $gem_bucket_1
 	var bucket_2 = $gem_bucket_2
 	var bucket_3 = $gem_bucket_3
+	var set_bucket_gem = $popup_purchase/mc/pc/vbox/button_set_gem
+	var popup = $popup_purchase
+	
+	popup.connect("update_bucket_texture", self, "_set_bucket_texture")
 	
 	if utility.unlock_dict["gem_bucket_1"] == true:
 		bucket_1.show()
 #		bucket_1.set_disabled(false)
-		bucket_1.connect("button_down", self, "_popup_purchase")
+		bucket_1.connect("button_down", self, "_popup_purchase", [bucket_1])
 		
 	if utility.unlock_dict["gem_bucket_2"] == true:
 		bucket_2.show()
 		bucket_2.set_disabled(false)
+		bucket_2.connect("button_down", self, "_popup_purchase", [bucket_2])
 		
 	if utility.unlock_dict["gem_bucket_3"] == true:
 		bucket_3.show()
 		bucket_3.set_disabled(false)
+		bucket_3.connect("button_down", self, "_popup_purchase", [bucket_3])
 		
-
-func _popup_purchase():
+	pass
+	
+func _popup_purchase(bucket):
 	var popup = $popup_purchase
-
+	popup.curr_bucket = bucket
+	
 	popup.popup_centered()
+	return
+	
+func _set_bucket_texture(bucket, gem_type):
+	var popup_purchase = $popup_purchase
+	var curr_array_pos = popup_purchase.curr_type_array_pos
+	var curr_gem = popup_purchase.gem_types[curr_array_pos]
+	
+	var texture_gem_type = bucket.get_node("texture_bucket")
+	var texture_path = "res://assets/actor_passive/gem_small/gem_"
+	var texture = load(texture_path + gem_type + ".png")
+		
+	texture_gem_type.set_texture(texture)
+	
+	#make sure to show the texture now :)
+	bucket.get_node("texture_bucket").show()
 	return
