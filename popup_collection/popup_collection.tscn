@@ -4,8 +4,9 @@
 [ext_resource path="res://assets/prototype/arrow_yellow.png" type="Texture" id=2]
 [ext_resource path="res://assets/actor_passive/gem_small/gem_jade.png" type="Texture" id=3]
 [ext_resource path="res://assets/prototype/buttonX.png" type="Texture" id=4]
-[ext_resource path="res://assets/actor_passive/gem_small/gem_amber.png" type="Texture" id=5]
+[ext_resource path="res://assets/actor_passive/gem_small/gem_garnet.png" type="Texture" id=5]
 [ext_resource path="res://assets/actor_passive/gem_small/gem_emerald.png" type="Texture" id=6]
+
 
 [node name="popup_collection" type="PopupPanel"]
 anchor_right = 1.0

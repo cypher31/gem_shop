@@ -123,13 +123,13 @@ var sfxDict = {
 var jade_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
 var ruby_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
 var emerald_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
-var amber_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
+var garnet_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
 
 var gem_count_dict = {
 	"jade" : jade_quality,
 	"ruby" : ruby_quality,
 	"emerald" : emerald_quality,
-	"amber" : amber_quality,
+	"garnet" : garnet_quality,
 	}
 	
 	

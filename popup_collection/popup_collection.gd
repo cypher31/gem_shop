@@ -1,7 +1,7 @@
 extends PopupPanel
 
 #script that handles gem selection for purchase counter
-var gem_types : Array = ["amber", "emerald", "jade", "ruby"]
+var gem_types : Array = ["garnet", "emerald", "jade", "ruby"]
 
 var curr_type_array_pos : int = 0 #keep track of the current position in the gem type array
 

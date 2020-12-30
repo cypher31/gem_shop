@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gem_amber.png-57680d467f0e9bff10eedd5824684915.stex"
+path="res://.import/gem_garnet.png-c373304268f5c02936486d03425f6a63.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/actor_passive/gem_small/gem_amber.png"
-dest_files=[ "res://.import/gem_amber.png-57680d467f0e9bff10eedd5824684915.stex" ]
+source_file="res://assets/actor_passive/gem_small/gem_garnet.png"
+dest_files=[ "res://.import/gem_garnet.png-c373304268f5c02936486d03425f6a63.stex" ]
 
 [params]
 
