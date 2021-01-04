@@ -9,6 +9,7 @@ signal stage_pop_up
 signal level_accepted
 signal clear_current_scene
 signal update_gem #update spawned gems to have the correct type
+signal bucket_set #when a gem bucket is set this signal is emitted
 
 #general signals
 

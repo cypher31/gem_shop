@@ -34,6 +34,7 @@ func _ready():
 	
 func _popup_purchase(bucket):
 	var popup = $popup_purchase
+		
 	popup.curr_bucket = bucket
 	
 	popup.popup_centered()
@@ -41,6 +42,7 @@ func _popup_purchase(bucket):
 	
 func _set_bucket_texture(bucket, gem_type):
 	var popup_purchase = $popup_purchase
+	var bucket_name : String = bucket.get_name()
 	var curr_array_pos = popup_purchase.curr_type_array_pos
 	var curr_gem = popup_purchase.gem_types[curr_array_pos]
 	
