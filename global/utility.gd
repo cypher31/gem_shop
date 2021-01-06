@@ -10,6 +10,8 @@ signal level_accepted
 signal clear_current_scene
 signal update_gem #update spawned gems to have the correct type
 signal bucket_set #when a gem bucket is set this signal is emitted
+signal purchase #signal emitted when a purchase needs to be made 
+signal update_coin_count #signal for updating the amount of coins a user has
 
 #general signals
 
@@ -124,7 +126,7 @@ var sfxDict = {
 var jade_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
 var ruby_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
 var emerald_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
-var garnet_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
+var garnet_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 10}} 
 
 var gem_count_dict = {
 	"jade" : jade_quality,
@@ -141,6 +143,10 @@ var unlock_dict = {
 	"gem_bucket_1" : true,
 	"gem_bucket_2" : false,
 	"gem_bucket_3" : false,
+}
+
+var purchase_dict = {
+	
 }
 	
 func _ready():
@@ -289,12 +295,13 @@ func __coin_timer_timeout():
 	pass
 
 
-func get_coin(coin):
-	var coin_value = 100
+func get_coin(coin, value):
+	var coin_value = value
 	
 	coin_count += coin_value
 	
-	coin.queue_free()
+	if coin != null:
+		coin.queue_free()
 	
 	coin_count_label.set_text(str(coin_count))
 	pass

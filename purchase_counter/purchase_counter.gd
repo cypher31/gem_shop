@@ -54,4 +54,8 @@ func _set_bucket_texture(bucket, gem_type):
 	
 	#make sure to show the texture now :)
 	bucket.get_node("texture_bucket").show()
+	bucket.gem_type = curr_gem
+	bucket.gem_polished = false
+	bucket.gem_quality = "rough"
+	utility.purchase_dict[bucket_name] = [self, curr_gem]
 	return

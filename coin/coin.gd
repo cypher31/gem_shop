@@ -33,7 +33,8 @@ func __check_overlap():
 		pass
 	
 	if is_top_level:
-		utility.get_coin(self)
+		var coin_value = 25
+		utility.get_coin(self, coin_value)
 		
 	z_depth_array.clear()
 	
