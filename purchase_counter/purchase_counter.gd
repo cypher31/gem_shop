@@ -15,17 +15,17 @@ func _ready():
 	
 	popup.connect("update_bucket_texture", self, "_set_bucket_texture")
 	
-	if utility.unlock_dict["gem_bucket_1"] == true:
+	if utility.unlock_dict_store["gem_bucket_1"] == true:
 		bucket_1.show()
 #		bucket_1.set_disabled(false)
 		bucket_1.connect("button_down", self, "_popup_purchase", [bucket_1])
 		
-	if utility.unlock_dict["gem_bucket_2"] == true:
+	if utility.unlock_dict_store["gem_bucket_2"] == true:
 		bucket_2.show()
 		bucket_2.set_disabled(false)
 		bucket_2.connect("button_down", self, "_popup_purchase", [bucket_2])
 		
-	if utility.unlock_dict["gem_bucket_3"] == true:
+	if utility.unlock_dict_store["gem_bucket_3"] == true:
 		bucket_3.show()
 		bucket_3.set_disabled(false)
 		bucket_3.connect("button_down", self, "_popup_purchase", [bucket_3])
@@ -57,5 +57,5 @@ func _set_bucket_texture(bucket, gem_type):
 	bucket.gem_type = curr_gem
 	bucket.gem_polished = false
 	bucket.gem_quality = "rough"
-	utility.purchase_dict[bucket_name] = [self, curr_gem]
+	utility.purchase_dict[bucket_name] = [bucket, curr_gem]
 	return

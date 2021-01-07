@@ -123,10 +123,10 @@ var sfxDict = {
 
 
 #dictionary to hold all of the users gems
-var jade_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
-var ruby_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 100}} 
-var emerald_quality : Dictionary = {"aaa" : {"p" : 100, "up" : 0}, "aa" : {"p" : 100, "up" : 0}, "a" : {"p" : 100, "up" : 0}, "rough" : {"p" : 100, "up" : 0}} 
-var garnet_quality : Dictionary = {"aaa" : {"p" : 0, "up" : 100}, "aa" : {"p" : 0, "up" : 100}, "a" : {"p" : 0, "up" : 100}, "rough" : {"p" : 0, "up" : 10}} 
+var jade_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
+var ruby_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
+var emerald_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
+var garnet_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
 
 var gem_count_dict = {
 	"jade" : jade_quality,
@@ -136,13 +136,19 @@ var gem_count_dict = {
 	}
 	
 	
-var unlock_dict = {
+var unlock_dict_store = {
+	"gem_bucket_1" : true,
+	"gem_bucket_2" : true,
+	"gem_bucket_3" : true,
+}
+
+var unlock_dict_field = {
 	"gem_storage_small" : true,
 	"gem_storage_med" : false,
 	"gem_storage_large" : false,
 	"gem_bucket_1" : true,
-	"gem_bucket_2" : false,
-	"gem_bucket_3" : false,
+	"gem_bucket_2" : true,
+	"gem_bucket_3" : true,
 }
 
 var purchase_dict = {

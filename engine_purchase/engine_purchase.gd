@@ -21,13 +21,27 @@ var npc_spawn_rate : int = 0 #number of NPC to spawn per x time
 
 var time_base_purchase : int = 20 #base number of seconds that pass before a purchase is made
 
-var base_purchase_chance : float = 0.05 #percentage chance that an npc buys an available gem
+var base_purchase_chance : float = 0.10 #percentage chance that an npc buys an available gem
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	utility.connect("bucket_set", self, "_bucket_set")
 	curr_npc_count = 10 #test value for purchase engine
 	
+	#update purchase chance based on unlocked items
+	var n : int
+	var purchase_chance_mod : float = 0.02 #increase base chance by 2% for each upgrade purchased
+	for item in utility.unlock_dict_store:
+		if utility.unlock_dict_store[item] == true:
+			n += 1
+		else:
+			pass
+	
+	base_purchase_chance += n*purchase_chance_mod
+	
+	print("base purchase chance: " + String(base_purchase_chance))
+	
+	#setup purchase timer
 	var timer_purchase = $timer_purchase
 	timer_purchase.connect("timeout", self, "_timer_purchase_timeout")
 	
@@ -60,7 +74,11 @@ func _purchase_gems(npc_count):
 			if roll < base_purchase_chance:
 				if purchase_dict.size() > 0:
 					utility.emit_signal("purchase", rand_purchase_key, cost_dict)
+			else:
+				return
+				#no purchase happens
 		else:
-			print("Nothing to Buyyy")
+			return
+			#nothing to buy
 				#need to pass whether gem is poloshed or unpolished as well
 	return
