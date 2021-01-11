@@ -12,6 +12,7 @@ signal update_gem #update spawned gems to have the correct type
 signal bucket_set #when a gem bucket is set this signal is emitted
 signal purchase #signal emitted when a purchase needs to be made 
 signal update_coin_count #signal for updating the amount of coins a user has
+signal end_field_camp #signal emitted when field camp is done
 
 #general signals
 
@@ -203,12 +204,11 @@ func load_field_camp(params):
 	var camp_loader = camp_instance.get_node("actors/active/soil_tile_grid")
 	camp_loader.gem_type = gem_type
 	camp_loader.camp_type = camp_type
-		
+	
+	emit_signal("clear_current_scene")
 	get_node("/root/main/stage_container").add_child(camp_instance)
 
 	#remove current screen variable and replace with signal
-	emit_signal("clear_current_scene")
-	
 	return
 
 
@@ -305,11 +305,12 @@ func get_coin(coin, value):
 	var coin_value = value
 	
 	coin_count += coin_value
-	
-	if coin != null:
-		coin.queue_free()
-	
 	coin_count_label.set_text(str(coin_count))
+	
+	if coin == null:
+		return
+	else:
+		coin.queue_free()
 	pass
 	
 

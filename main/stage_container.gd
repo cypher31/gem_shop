@@ -13,5 +13,9 @@ func _ready():
 
 
 func _clear_current_scene():
-	get_child(0).queue_free() #stage_container should only have one child
+	var children : Array = get_children()
+	
+	for child in children:
+		if child.get_name() != "stage_store_front":
+			child.queue_free() #stage_container should only have one child
 	return

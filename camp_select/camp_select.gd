@@ -4,6 +4,13 @@ extends PopupPanel
 var gem_types : Array = ["garnet", "emerald", "jade", "ruby"]
 var camp_types : Array = ["investigation", "expedition", "excursion", "commercial"]
 
+var camp_costs : Dictionary = {
+	"investigation" : 200,
+	"expedition" : 600,
+	"excursion" : 1200,
+	"commercial" : 2400
+}
+
 var curr_type_array_pos : int = 0 #keep track of the current position in the gem type array
 var curr_camp_array_pos : int = 0
 
@@ -77,13 +84,20 @@ func _camp_update(dir):
 	return
 	
 func _field_camp_param_setter():
-	var params : Dictionary = {}
-	
+	var curr_coin_count = utility.coin_count
 	var gem_type = gem_types[curr_type_array_pos]
 	var camp_type = camp_types[curr_camp_array_pos]
+	var camp_value = camp_costs[camp_type]
+	var params : Dictionary = {}
+	var popup = self
 	
-	params["gem_type"] = gem_type
-	params["camp_type"] = camp_type
-	
-	utility.load_field_camp(params)
+	if curr_coin_count >= camp_costs[camp_type]:
+		utility.get_coin(null, -camp_value)
+		params["gem_type"] = gem_type
+		params["camp_type"] = camp_type
+		
+		popup.hide()
+		utility.load_field_camp(params)
+	else:
+		print("NEED MORE MONEY")
 	return
