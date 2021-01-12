@@ -18,4 +18,10 @@ func _clear_current_scene():
 	for child in children:
 		if child.get_name() != "stage_store_front":
 			child.queue_free() #stage_container should only have one child
+		else: #hide the store so accidental button clicks don't happen
+			print(child.visible)
+			if child.visible:
+				child.hide()
+			else:
+				child.show()
 	return

@@ -1,0 +1,12 @@
+[gd_scene format=2]
+
+[node name="size_helper" type="Container"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 868.0
+margin_bottom = 1408.0
+rect_min_size = Vector2( 836, 1376 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

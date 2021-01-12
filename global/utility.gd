@@ -44,7 +44,7 @@ var resolution = Vector2(1280, 720)
 
 
 #player variables (for saving and for the player script to grab)
-var coin_count : int
+var coin_count : int = 500
 
 var user_variables = {
 	"coin_count" : coin_count
