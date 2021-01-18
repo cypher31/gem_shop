@@ -21,6 +21,7 @@ extents = Vector2( 64, 64 )
 
 [node name="NPC_base" type="KinematicBody2D"]
 position = Vector2( 448, 1408 )
+collision_layer = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

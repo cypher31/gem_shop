@@ -65,3 +65,8 @@ visible = false
 [node name="engine_purchase" parent="." instance=ExtResource( 5 )]
 
 [node name="engine_NPC" parent="." instance=ExtResource( 6 )]
+
+[node name="bounds_building" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bounds_building"]
+polygon = PoolVector2Array( 32, 1408, 32, 32, 864, 32, 864, 1408, 544, 1408, 544, 1440, 896, 1440, 896, 0, 0, 0, 0, 1440, 352, 1440, 352, 1408 )

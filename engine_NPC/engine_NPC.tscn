@@ -15,3 +15,30 @@ position = Vector2( 448, 1408 )
 
 [node name="NPC_base" parent="." instance=ExtResource( 3 )]
 script = ExtResource( 4 )
+
+[node name="NPC_base2" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base3" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base4" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base5" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base6" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base7" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base8" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base9" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="NPC_base10" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
