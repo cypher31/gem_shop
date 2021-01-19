@@ -13,6 +13,7 @@ signal bucket_set #when a gem bucket is set this signal is emitted
 signal purchase #signal emitted when a purchase needs to be made 
 signal update_coin_count #signal for updating the amount of coins a user has
 signal end_field_camp #signal emitted when field camp is done
+signal NPC_coin_spawn #signal called when the NPC spawns a coin
 
 #general signals
 
@@ -160,7 +161,7 @@ func _ready():
 	randomize()
 	
 	#global signals
-
+	
 
 	#get device info
 	deviceWindowSize = OS.get_window_size()
@@ -303,7 +304,7 @@ func __coin_timer_timeout():
 
 func get_coin(coin, value):
 	var coin_value = value
-	
+	print(coin_value)
 	coin_count += coin_value
 	coin_count_label.set_text(str(coin_count))
 	
