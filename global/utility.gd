@@ -9,6 +9,11 @@ signal stage_pop_up
 signal level_accepted
 signal clear_current_scene
 signal update_gem #update spawned gems to have the correct type
+signal bucket_set #when a gem bucket is set this signal is emitted
+signal purchase #signal emitted when a purchase needs to be made 
+signal update_coin_count #signal for updating the amount of coins a user has
+signal end_field_camp #signal emitted when field camp is done
+signal NPC_coin_spawn #signal called when the NPC spawns a coin
 
 #general signals
 
@@ -40,7 +45,7 @@ var resolution = Vector2(1280, 720)
 
 
 #player variables (for saving and for the player script to grab)
-var coin_count : int
+var coin_count : int = 500
 
 var user_variables = {
 	"coin_count" : coin_count
@@ -120,35 +125,43 @@ var sfxDict = {
 
 
 #dictionary to hold all of the users gems
-var gem_sizes : Dictionary = {"small" : 0, "med" : 0, "large" : 0}
-
-var jade_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}} 
-var ruby_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var emerald_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
-var amber_quality : Dictionary = {"AAA" : {"small" : 0, "med" : 0, "large" : 0}, "AA" : {"small" : 0, "med" : 0, "large" : 0}, "A" : {"small" : 0, "med" : 0, "large" : 0}, "rough" : {"small" : 0, "med" : 0, "large" : 0}}
+var jade_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
+var ruby_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
+var emerald_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
+var garnet_quality : Dictionary = {"aaa" : {"p" : 10, "up" : 10}, "aa" : {"p" : 10, "up" : 10}, "a" : {"p" : 10, "up" : 10}, "rough" : {"p" : 10, "up" : 10}} 
 
 var gem_count_dict = {
 	"jade" : jade_quality,
 	"ruby" : ruby_quality,
 	"emerald" : emerald_quality,
-	"amber" : amber_quality,
+	"garnet" : garnet_quality,
 	}
 	
 	
-var unlock_dict = {
+var unlock_dict_store = {
+	"gem_bucket_1" : true,
+	"gem_bucket_2" : true,
+	"gem_bucket_3" : true,
+}
+
+var unlock_dict_field = {
 	"gem_storage_small" : true,
 	"gem_storage_med" : false,
 	"gem_storage_large" : false,
 	"gem_bucket_1" : true,
-	"gem_bucket_2" : false,
-	"gem_bucket_3" : false,
+	"gem_bucket_2" : true,
+	"gem_bucket_3" : true,
+}
+
+var purchase_dict = {
+	
 }
 	
 func _ready():
 	randomize()
 	
 	#global signals
-
+	
 
 	#get device info
 	deviceWindowSize = OS.get_window_size()
@@ -192,12 +205,11 @@ func load_field_camp(params):
 	var camp_loader = camp_instance.get_node("actors/active/soil_tile_grid")
 	camp_loader.gem_type = gem_type
 	camp_loader.camp_type = camp_type
-		
+	
+	emit_signal("clear_current_scene")
 	get_node("/root/main/stage_container").add_child(camp_instance)
 
 	#remove current screen variable and replace with signal
-	emit_signal("clear_current_scene")
-	
 	return
 
 
@@ -290,32 +302,31 @@ func __coin_timer_timeout():
 	pass
 
 
-func get_coin(coin):
-	var coin_value = 100
-	
+func get_coin(coin, value):
+	var coin_value = value
+	print(coin_value)
 	coin_count += coin_value
-	
-	coin.queue_free()
-	
 	coin_count_label.set_text(str(coin_count))
+	
+	if coin == null:
+		return
+	else:
+		coin.queue_free()
 	pass
 	
 
 func get_gem(gem_actor, gem_size, gem_type, gem_quality):
-	if gem_size == "small":
-		gem_actor.queue_free()
-		
-		var asset_path = "res://assets/actor_passive/gem_small/gem_"
-		var asset = load(asset_path + gem_type + ".png")
-		
-		var grid = gem_small_container.get_node("gem_grid")
-		
-		var gem = TextureRect.new()
-		gem.set_texture(asset)
-		
-		grid.add_child(gem)
-		
-		gem_count_dict[gem_type][gem_quality][gem_size] += 1
-		
-		pass
+	gem_actor.queue_free()
+	
+	var asset_path = "res://assets/actor_passive/gem_small/gem_"
+	var asset = load(asset_path + gem_type + ".png")
+	
+	var grid = gem_small_container.get_node("gem_grid")
+	
+	var gem = TextureRect.new()
+	gem.set_texture(asset)
+	
+	grid.add_child(gem)
+	
+	gem_count_dict[gem_type][gem_quality]["up"] += 1
 	pass

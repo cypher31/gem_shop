@@ -6,6 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#global signal controls when dig counter is updated
 	utility.connect("user_dig", self, "__update_dig_counter")
 	pass # Replace with function body.
 
@@ -18,4 +19,7 @@ func __update_dig_counter():
 	
 	bar.set_value(new_value)
 	bar_count.set_text(str(bar.get_value()))
+	
+	if new_value == 0:
+		utility.emit_signal("end_field_camp")
 	pass

@@ -7,6 +7,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	utility.connect("user_dig", self, "__check_overlap") #when the user destroys a tile a timer is set to emit this signal
+	$Area2D.connect("mouse_entered", self, "_mouse_enter")
 	pass # Replace with function body.
 
 
@@ -33,8 +34,13 @@ func __check_overlap():
 		pass
 	
 	if is_top_level:
-		utility.get_coin(self)
+		var coin_value = 25
+		utility.get_coin(self, coin_value)
 		
 	z_depth_array.clear()
-	
 	pass
+	
+func _mouse_enter():
+	var coin_value = 5
+	utility.get_coin(self, coin_value)
+	return
