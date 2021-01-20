@@ -4,7 +4,9 @@
 [ext_resource path="res://assets/actor_passive/gem_small/gem_garnet.png" type="Texture" id=2]
 [ext_resource path="res://gem_bucket/gem_bucket.gd" type="Script" id=3]
 
-[node name="gem_bucket_1" type="TextureButton"]
+[node name="gem_bucket_1" type="TextureButton" groups=[
+"bucket",
+]]
 visible = false
 margin_top = -80.0
 margin_right = 128.0
