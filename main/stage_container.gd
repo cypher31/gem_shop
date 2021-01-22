@@ -9,7 +9,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	utility.connect("clear_current_scene", self, "_clear_current_scene")
-	utility.connect("NPC_coin_spawn", self, "_NPC_coin_spawn")
 	pass # Replace with function body.
 
 
@@ -26,7 +25,4 @@ func _clear_current_scene():
 			else:
 				child.show()
 	return
-	
-func _NPC_coin_spawn(coin_position):
-	var coin = utility.spawn_object(utility.active_actor_dict["coin"], $parent_coin, coin_position)
-	return
+

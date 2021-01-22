@@ -140,17 +140,14 @@ var gem_count_dict = {
 	
 var unlock_dict_store = {
 	"gem_bucket_1" : true,
-	"gem_bucket_2" : true,
-	"gem_bucket_3" : true,
+	"gem_bucket_2" : false,
+	"gem_bucket_3" : false,
 }
 
 var unlock_dict_field = {
 	"gem_storage_small" : true,
 	"gem_storage_med" : false,
 	"gem_storage_large" : false,
-	"gem_bucket_1" : true,
-	"gem_bucket_2" : true,
-	"gem_bucket_3" : true,
 }
 
 var purchase_dict = {

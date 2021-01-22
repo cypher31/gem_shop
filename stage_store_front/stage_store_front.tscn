@@ -82,3 +82,5 @@ position = Vector2( 512, 1024 )
 
 [node name="gem_display_small2" parent="parent_display" instance=ExtResource( 7 )]
 position = Vector2( 352, 864 )
+
+[node name="parent_coin" type="Node" parent="."]
