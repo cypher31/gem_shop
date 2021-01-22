@@ -5,25 +5,15 @@ var gem_types : Array = ["garnet", "emerald", "jade", "ruby"]
 var curr_type_array_pos : int = 0 #keep track of the current position in the gem type array
 var curr_bucket #the current bucket selected
 var curr_case #the current case selected
+var curr_type #bucket or case
 
 signal update_bucket_texture
 signal update_case_texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var button_type_right = $mc/pc/vbox/hbox_gem_type/button_type_right
-	var button_type_left = $mc/pc/vbox/hbox_gem_type/button_type_left
-	var button_set = $mc/pc/vbox/button_set_gem
+	connect("about_to_show", self, "_set_connections")
 	
-	if get_parent().is_in_group("bucket"):
-		button_type_right.connect("button_down", self, "_type_update", [1])
-		button_type_left.connect("button_down", self, "_type_update", [-1])
-		button_set.connect("button_down", self, "_set_bucket_texture")
-	elif get_parent().is_in_group("case"):
-		button_type_right.connect("button_down", self, "_type_update", [1])
-		button_type_left.connect("button_down", self, "_type_update", [-1])
-		button_set.connect("button_down", self, "_set_case_texture")
-		
 	#set initial gem_type
 	var label_gem_type = $mc/pc/vbox/label_gem_type
 	var texture_gem_type = $mc/pc/vbox/hbox_gem_type/texture_gem_type
@@ -33,8 +23,25 @@ func _ready():
 	
 	label_gem_type.set_text(label_type_string)
 	texture_gem_type.set_texture(texture)
+	
+	#set as top z level
+	
 	pass # Replace with function body.
 
+func _set_connections():
+	var button_type_right = $mc/pc/vbox/hbox_gem_type/button_type_right
+	var button_type_left = $mc/pc/vbox/hbox_gem_type/button_type_left
+	var button_set = $mc/pc/vbox/button_set_gem
+	
+	if curr_type == "bucket":
+		button_type_right.connect("button_down", self, "_type_update", [1])
+		button_type_left.connect("button_down", self, "_type_update", [-1])
+		button_set.connect("button_down", self, "_set_bucket_texture")
+	elif curr_type == "case":
+		button_type_right.connect("button_down", self, "_type_update", [1])
+		button_type_left.connect("button_down", self, "_type_update", [-1])
+		button_set.connect("button_down", self, "_set_case_texture")
+	return
 
 func _type_update(dir):
 	var next_array_pos = curr_type_array_pos + dir
@@ -63,6 +70,6 @@ func _set_bucket_texture():
 	return
 	
 func _set_case_texture():
-	emit_signal("update_bucket_texture", curr_bucket, gem_types[curr_type_array_pos])
+	emit_signal("update_case_texture", curr_case, gem_types[curr_type_array_pos])
 	hide()
 	return

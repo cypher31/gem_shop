@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://purchase_counter/purchase_counter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://stage_store_front/stage_store_front.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://popup_collection/popup_collection.tscn" type="PackedScene" id=4]
 [ext_resource path="res://engine_purchase/engine_purchase.tscn" type="PackedScene" id=5]
 [ext_resource path="res://engine_NPC/engine_NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gem_display_small/gem_display_small.tscn" type="PackedScene" id=7]
+[ext_resource path="res://popup_purchase/popup_purchase.tscn" type="PackedScene" id=8]
 
 [node name="stage_store_front" type="Node2D"]
 script = ExtResource( 2 )
@@ -62,6 +64,8 @@ visible = false
 
 [node name="popup_collection" parent="." instance=ExtResource( 4 )]
 
+[node name="popup_purchase" parent="." instance=ExtResource( 8 )]
+
 [node name="engine_purchase" parent="." instance=ExtResource( 5 )]
 
 [node name="engine_NPC" parent="." instance=ExtResource( 6 )]
@@ -70,3 +74,11 @@ visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bounds_building"]
 polygon = PoolVector2Array( 32, 1408, 32, 32, 864, 32, 864, 1408, 544, 1408, 544, 1440, 896, 1440, 896, 0, 0, 0, 0, 1440, 352, 1440, 352, 1408 )
+
+[node name="parent_display" type="Node" parent="."]
+
+[node name="gem_display_small" parent="parent_display" instance=ExtResource( 7 )]
+position = Vector2( 512, 1024 )
+
+[node name="gem_display_small2" parent="parent_display" instance=ExtResource( 7 )]
+position = Vector2( 352, 864 )

@@ -7,13 +7,13 @@ var gem_type_bucket_3 : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var popup_gem_set = get_parent().get_node("popup_purchase")
 	var bucket_1 = $gem_bucket_1
 	var bucket_2 = $gem_bucket_2
 	var bucket_3 = $gem_bucket_3
-	var set_bucket_gem = $popup_purchase/mc/pc/vbox/button_set_gem
-	var popup = $popup_purchase
+	var set_bucket_gem = popup_gem_set.get_node("mc/pc/vbox/button_set_gem")
 	
-	popup.connect("update_bucket_texture", self, "_set_bucket_texture")
+	popup_gem_set.connect("update_bucket_texture", self, "_set_bucket_texture")
 	
 	if utility.unlock_dict_store["gem_bucket_1"] == true:
 		bucket_1.show()
@@ -33,15 +33,17 @@ func _ready():
 	pass
 	
 func _popup_purchase(bucket):
-	var popup = $popup_purchase
+	var popup = get_parent().get_node("popup_purchase")
 		
 	popup.curr_bucket = bucket
+	popup.curr_type = "bucket"
 	
 	popup.popup_centered()
+	popup.raise()
 	return
 	
 func _set_bucket_texture(bucket, gem_type):
-	var popup_purchase = $popup_purchase
+	var popup_purchase = get_parent().get_node("popup_purchase")
 	var bucket_name : String = bucket.get_name()
 	var curr_array_pos = popup_purchase.curr_type_array_pos
 	var curr_gem = popup_purchase.gem_types[curr_array_pos]

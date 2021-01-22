@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://gem_display_small/gem_display_small.gd" type="Script" id=2]
 [ext_resource path="res://assets/prototype/gem_red.png" type="Texture" id=3]
-[ext_resource path="res://popup_purchase/popup_purchase.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 55.8977, 59.0238 )
@@ -16,7 +15,7 @@ extents = Vector2( 124, 124 )
 ]]
 script = ExtResource( 2 )
 
-[node name="sprite_case" type="TextureButton" parent="."]
+[node name="case_button" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -38,8 +37,6 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="popup_purchase" parent="." instance=ExtResource( 4 )]
 
 [node name="dead_zone" type="Area2D" parent="."]
 
