@@ -47,9 +47,8 @@ margin_right = 765.0
 margin_bottom = 529.0
 
 [node name="label_gem_type" type="Label" parent="mc/pc/vbox"]
-margin_top = -1.0
 margin_right = 758.0
-margin_bottom = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 text = "GEM_STONE"
 align = 1
