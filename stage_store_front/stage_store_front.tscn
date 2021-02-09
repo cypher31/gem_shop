@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://purchase_counter/purchase_counter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://stage_store_front/stage_store_front.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://engine_NPC/engine_NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gem_display_small/gem_display_small.tscn" type="PackedScene" id=7]
 [ext_resource path="res://popup_purchase/popup_purchase.tscn" type="PackedScene" id=8]
+[ext_resource path="res://popup_store_upgrade/popup_store_upgrade.tscn" type="PackedScene" id=9]
 
 [node name="stage_store_front" type="Node2D"]
 script = ExtResource( 2 )
@@ -63,6 +64,8 @@ text = "STORE UPGRADE"
 visible = false
 
 [node name="popup_collection" parent="." instance=ExtResource( 4 )]
+
+[node name="popup_store_upgrade" parent="." instance=ExtResource( 9 )]
 
 [node name="popup_purchase" parent="." instance=ExtResource( 8 )]
 
