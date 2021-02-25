@@ -61,7 +61,6 @@ size_flags_horizontal = 6
 text = "STORE UPGRADE"
 
 [node name="camp_select" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="popup_collection" parent="." instance=ExtResource( 4 )]
 
@@ -78,7 +77,7 @@ visible = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bounds_building"]
 polygon = PoolVector2Array( 32, 1408, 32, 32, 864, 32, 864, 1408, 544, 1408, 544, 1440, 896, 1440, 896, 0, 0, 0, 0, 1440, 352, 1440, 352, 1408 )
 
-[node name="parent_display" type="Node" parent="."]
+[node name="parent_display" type="Node2D" parent="."]
 
 [node name="gem_display_small" parent="parent_display" instance=ExtResource( 7 )]
 position = Vector2( 512, 1024 )
@@ -86,4 +85,4 @@ position = Vector2( 512, 1024 )
 [node name="gem_display_small2" parent="parent_display" instance=ExtResource( 7 )]
 position = Vector2( 352, 864 )
 
-[node name="parent_coin" type="Node" parent="."]
+[node name="parent_coin" type="Node2D" parent="."]

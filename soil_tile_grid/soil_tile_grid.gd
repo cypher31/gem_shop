@@ -101,7 +101,7 @@ func spawn_gems(tile_positions, depth):
 	var chance_aaa : float
 	
 	total_gems = sqrt(tile_positions.size()) * 2
-	print(camp_type)
+
 	if camp_type == "investigation":
 		chance_rough = 0.80
 		chance_a = 0.10

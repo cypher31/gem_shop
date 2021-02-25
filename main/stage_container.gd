@@ -14,14 +14,16 @@ func _ready():
 
 func _clear_current_scene():
 	var children : Array = get_children()
-	
+
 	for child in children:
-		if child.get_name() != "stage_store_front" || child.get_name() != "parent_coin":
+		var child_name : String = child.get_name()
+		if child.get_name() != "stage_store_front" and child.get_name() != "parent_coin":
 			child.queue_free() #stage_container should only have one child
-		else: #hide the store so accidental button clicks don't happen
-			print(child.visible)
-			if child.visible:
+		elif child.get_name() == "stage_store_front" || child.get_name() == "parent_coin":
+			print(child.get_name())
+			if child.is_visible():
 				child.hide()
+				print("HIDING")
 			else:
 				child.show()
 	return
