@@ -96,11 +96,13 @@ var soil_tile_node = preload("res://soil_tile/soil_tile.tscn")
 var tile_size : Vector2 = soil_tile_node.instance().get_node("Sprite").get_texture().get_size() # get the size of tiles currently being used
 
 var coin = preload("res://coin/coin.tscn")
+var coin_npc = preload("res://coin_NPC/coin_NPC.tscn")
 var gem_small = preload("res://gem_small/gem_small.tscn")
 
 var active_actor_dict = {
 	"soil_tile_node" : soil_tile_node,
 	"coin" : coin,
+	"coin_npc" : coin_npc,
 	"gem_small" : gem_small
 	}
 
@@ -219,7 +221,7 @@ func dialog_popup(scene, bool_exclusive):
 	instance_dialog.popup()
 	return
 
-func spawn_object(object, parent, position):
+func spawn_object(object, parent, position, group):
 	var objectToInstance = object.instance()
 	
 	parent.add_child(objectToInstance)
@@ -233,6 +235,9 @@ func spawn_object(object, parent, position):
 		objectToInstance.set_global_position(position)
 	else:
 		pass
+		
+	if group != null:
+		objectToInstance.add_to_group(group)
 	return objectToInstance
 	
 

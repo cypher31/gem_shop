@@ -1,8 +1,6 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var is_top_level : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +15,7 @@ func __check_overlap():
 	var z_depth = get_z_index()
 	var z_depth_array : Array
 	
-	var is_top_level : bool = false
+	is_top_level = false
 	
 	for tile in overlapping_areas:
 		if tile.is_in_group("soil"):
@@ -33,7 +31,7 @@ func __check_overlap():
 		is_top_level = true
 		pass
 	
-	if is_top_level:
+	if is_top_level and self.is_in_group("field"):
 		var coin_value = 25
 		utility.get_coin(self, coin_value)
 		
@@ -41,6 +39,8 @@ func __check_overlap():
 	pass
 	
 func _mouse_enter():
-	var coin_value = 5
-	utility.get_coin(self, coin_value)
+	print(self.get_groups())
+	if self.is_in_group("store") and !self.is_in_group("field"):
+		var coin_value = 5
+		utility.get_coin(self, coin_value)
 	return

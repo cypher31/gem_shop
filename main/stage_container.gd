@@ -20,11 +20,14 @@ func _clear_current_scene():
 		if child.get_name() != "stage_store_front" and child.get_name() != "parent_coin":
 			child.queue_free() #stage_container should only have one child
 		elif child.get_name() == "stage_store_front" || child.get_name() == "parent_coin":
-			print(child.get_name())
+
 			if child.is_visible():
 				child.hide()
-				print("HIDING")
+				if child_name == "stage_store":
+					child.get_node("stage_blocker").show()
 			else:
 				child.show()
+				if child_name == "stage_store":
+					child.get_node("stage_blocker").hide()
 	return
 

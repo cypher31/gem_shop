@@ -39,5 +39,5 @@ func _store_upgrade_pop():
 	return
 
 func _NPC_coin_spawn(coin_position):
-	var coin = utility.spawn_object(utility.active_actor_dict["coin"], $parent_coin, coin_position)
+	var coin = utility.spawn_object(utility.active_actor_dict["coin_npc"], $parent_coin, coin_position, "store")
 	return

@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/prototype/coin.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 7.5
+radius = 15.0
 
 [node name="coin" type="Node2D" groups=[
 "coin",

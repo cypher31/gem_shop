@@ -51,7 +51,7 @@ func grid_size_calc(grid_size):
 	
 	
 func spawn_tile_grid(grid, depth): #grid = grid_spawn_array
-	var tile = utility.spawn_object(utility.active_actor_dict[tile_name], self, position)
+	var tile = utility.spawn_object(utility.active_actor_dict[tile_name], self, position, null)
 	
 	for i in range(0, depth):
 		var position : Vector2
@@ -62,7 +62,7 @@ func spawn_tile_grid(grid, depth): #grid = grid_spawn_array
 				else:
 					position = Vector2(tile_size.x + (k - 0.5) * utility.tile_size.x, j * (utility.tile_size.y - tile_align_mod) - z_draw_depth * tile_depth_mod)
 					
-				var tile_instance = utility.spawn_object(utility.active_actor_dict[tile_name], self, position)
+				var tile_instance = utility.spawn_object(utility.active_actor_dict[tile_name], self, position, null)
 				tile_position_array.append(tile_instance.get_global_position())
 				tile_instance.set_z_index(z_draw_depth)
 				tile_instance.soil_column = soil_column
@@ -85,7 +85,7 @@ func spawn_coins(tile_positions, depth):
 		var random_num = randi() % tile_positions.size()
 		var random_depth = (randi() % depth) - 1
 
-		var coin = utility.spawn_object(utility.active_actor_dict["coin"], $coin_spawn,tile_positions[random_num])
+		var coin = utility.spawn_object(utility.active_actor_dict["coin"], $coin_spawn,tile_positions[random_num], "field")
 		coin.set_z_index(random_depth)
 		pass
 	pass
@@ -145,7 +145,7 @@ func spawn_gems(tile_positions, depth):
 		elif random_num_grade < acc_weight_aaa and random_num_grade > acc_weight_aa:
 			gem_grade = "aaa"
 
-		var gem = utility.spawn_object(utility.active_actor_dict["gem_small"], $gem_spawn,tile_positions[random_num])
+		var gem = utility.spawn_object(utility.active_actor_dict["gem_small"], $gem_spawn,tile_positions[random_num], "field")
 		utility.emit_signal("update_gem", gem_type_instance, gem_grade, camp_type)
 		gem.gem_type = gem_type_instance
 		gem.set_z_index(random_depth)
